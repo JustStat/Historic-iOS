@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16E183b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="LRz-Rh-329">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Main Collection View Controller-->
+        <scene sceneID="vUU-z1-T9v">
+            <objects>
+                <collectionViewController id="LRz-Rh-329" customClass="MainCollectionViewController" customModule="Historic" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="nSA-CD-7Y3">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.91776354421977124" green="0.41356177236519609" blue="0.052544487847222224" alpha="1" colorSpace="calibratedRGB"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="RNT-iv-gxX" customClass="AnimatedCollectionViewLayout" customModule="AnimatedCollectionViewLayout">
+                            <size key="itemSize" width="304" height="584"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="locationCell" id="XG7-1Z-oHb" customClass="LocationCollectionViewCell" customModule="Historic" customModuleProvider="target">
+                                <rect key="frame" x="36" y="0.0" width="304" height="584"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="304" height="584"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Railstation" translatesAutoresizingMaskIntoConstraints="NO" id="GRq-4d-Ke1">
+                                            <rect key="frame" x="0.0" y="0.0" width="304" height="584"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="GRq-4d-Ke1" secondAttribute="height" multiplier="1:1" constant="-280" id="qVn-0g-9Ah"/>
+                                            </constraints>
+                                        </imageView>
+                                        <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YBV-FU-8r8">
+                                            <rect key="frame" x="0.0" y="228" width="304" height="128"/>
+                                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="bsR-mv-ZFB">
+                                                <rect key="frame" x="0.0" y="0.0" width="304" height="128"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Железнодорожный вокзал" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="st3-b5-Nhe">
+                                                        <rect key="frame" x="8" y="8" width="288" height="112"/>
+                                                        <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="31"/>
+                                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="st3-b5-Nhe" firstAttribute="top" secondItem="bsR-mv-ZFB" secondAttribute="top" constant="8" id="2N3-4n-5an"/>
+                                                    <constraint firstAttribute="trailing" secondItem="st3-b5-Nhe" secondAttribute="trailing" constant="8" id="6Qi-fl-iRX"/>
+                                                    <constraint firstItem="st3-b5-Nhe" firstAttribute="leading" secondItem="bsR-mv-ZFB" secondAttribute="leading" constant="8" id="gac-DS-RdB"/>
+                                                    <constraint firstAttribute="bottom" secondItem="st3-b5-Nhe" secondAttribute="bottom" constant="8" id="saz-ca-L3S"/>
+                                                </constraints>
+                                            </view>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="YBV-FU-8r8" secondAttribute="height" multiplier="19:8" id="azr-Vm-E89"/>
+                                            </constraints>
+                                            <blurEffect style="light"/>
+                                        </visualEffectView>
+                                    </subviews>
+                                </view>
+                                <color key="backgroundColor" red="0.11182042879413401" green="1" blue="0.1428085959668528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="YBV-FU-8r8" firstAttribute="centerY" secondItem="GRq-4d-Ke1" secondAttribute="centerY" id="A4L-ZX-7Xl"/>
+                                    <constraint firstItem="YBV-FU-8r8" firstAttribute="centerX" secondItem="GRq-4d-Ke1" secondAttribute="centerX" id="Bks-Ld-YHp"/>
+                                    <constraint firstItem="GRq-4d-Ke1" firstAttribute="leading" secondItem="XG7-1Z-oHb" secondAttribute="leading" id="RK7-9S-pvU"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="YBV-FU-8r8" secondAttribute="trailing" constant="-8" id="SYt-Rc-oYd"/>
+                                    <constraint firstItem="YBV-FU-8r8" firstAttribute="leading" secondItem="XG7-1Z-oHb" secondAttribute="leadingMargin" constant="-8" id="iGu-zB-EgJ"/>
+                                    <constraint firstItem="YBV-FU-8r8" firstAttribute="width" secondItem="GRq-4d-Ke1" secondAttribute="width" id="ktR-cX-IrP"/>
+                                    <constraint firstItem="GRq-4d-Ke1" firstAttribute="top" secondItem="XG7-1Z-oHb" secondAttribute="top" id="lnm-Cf-NJX"/>
+                                    <constraint firstAttribute="trailing" secondItem="GRq-4d-Ke1" secondAttribute="trailing" id="yyN-0B-xZm"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="locationImage" destination="GRq-4d-Ke1" id="kv2-A2-fWn"/>
+                                    <segue destination="gEu-Bl-sjV" kind="show" id="XDG-Zn-g32"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="LRz-Rh-329" id="qUd-b3-eY5"/>
+                            <outlet property="delegate" destination="LRz-Rh-329" id="K2o-Ie-eSA"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" id="9ft-1c-9mh"/>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eeo-oS-ktf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1076" y="111.99400299850076"/>
+        </scene>
+        <!--Location Detail View Controller-->
+        <scene sceneID="Yfu-x3-dET">
+            <objects>
+                <viewController id="gEu-Bl-sjV" customClass="LocationDetailViewController" customModule="Historic" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ekC-Sj-i2e"/>
+                        <viewControllerLayoutGuide type="bottom" id="yBp-V4-0gl"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="VTA-sp-zai">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="1150"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ucX-b1-0uu">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="1150"/>
+                                <subviews>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="justified" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uCF-dc-HMD">
+                                        <rect key="frame" x="0.0" y="373" width="375" height="372"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="372" id="Dbe-Sa-M3j"/>
+                                        </constraints>
+                                        <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda. Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="BU7-Ac-63R">
+                                        <rect key="frame" x="0.0" y="745" width="375" height="128"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="BU7-Ac-63R" secondAttribute="height" multiplier="375:128" id="oZ1-F7-z00"/>
+                                        </constraints>
+                                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="KlU-aO-0E0">
+                                            <size key="itemSize" width="110" height="125"/>
+                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        </collectionViewFlowLayout>
+                                        <cells>
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="7nI-0l-pXA">
+                                                <rect key="frame" x="0.0" y="0.0" width="110" height="125"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                                    <rect key="frame" x="0.0" y="0.0" width="110" height="125"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Railstation" translatesAutoresizingMaskIntoConstraints="NO" id="O95-dq-o9x">
+                                                            <rect key="frame" x="0.0" y="0.0" width="110" height="126"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        </imageView>
+                                                    </subviews>
+                                                </view>
+                                            </collectionViewCell>
+                                        </cells>
+                                    </collectionView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Railstation" translatesAutoresizingMaskIntoConstraints="NO" id="fir-Wc-lXd">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="375"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="fir-Wc-lXd" secondAttribute="height" multiplier="1:1" id="Gj2-I9-5kD"/>
+                                        </constraints>
+                                    </imageView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jaw-ei-8dO" customClass="GMSMapView">
+                                        <rect key="frame" x="0.0" y="869" width="375" height="281"/>
+                                        <color key="backgroundColor" red="0.18839155499999999" green="1" blue="0.4150103174" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="281" id="rQQ-eq-2Xh"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="fir-Wc-lXd" firstAttribute="width" secondItem="ucX-b1-0uu" secondAttribute="width" id="0JQ-Bf-6pe"/>
+                                    <constraint firstItem="fir-Wc-lXd" firstAttribute="top" secondItem="ucX-b1-0uu" secondAttribute="top" id="8ZE-03-SYq"/>
+                                    <constraint firstAttribute="trailing" secondItem="BU7-Ac-63R" secondAttribute="trailing" id="Axu-44-2DG"/>
+                                    <constraint firstItem="Jaw-ei-8dO" firstAttribute="top" secondItem="BU7-Ac-63R" secondAttribute="bottom" constant="-4" id="EFu-se-DIg"/>
+                                    <constraint firstItem="fir-Wc-lXd" firstAttribute="leading" secondItem="ucX-b1-0uu" secondAttribute="leading" id="GA6-vJ-Lhj"/>
+                                    <constraint firstItem="BU7-Ac-63R" firstAttribute="leading" secondItem="ucX-b1-0uu" secondAttribute="leading" id="JzE-BA-Aae"/>
+                                    <constraint firstItem="uCF-dc-HMD" firstAttribute="top" secondItem="fir-Wc-lXd" secondAttribute="bottom" constant="-2" id="KQZ-jX-zEh"/>
+                                    <constraint firstItem="BU7-Ac-63R" firstAttribute="top" secondItem="uCF-dc-HMD" secondAttribute="bottom" id="TXe-iw-cfc"/>
+                                    <constraint firstAttribute="trailing" secondItem="Jaw-ei-8dO" secondAttribute="trailing" id="TzS-G7-cmE"/>
+                                    <constraint firstItem="uCF-dc-HMD" firstAttribute="leading" secondItem="ucX-b1-0uu" secondAttribute="leadingMargin" constant="-8" id="Unl-b0-TWJ"/>
+                                    <constraint firstItem="uCF-dc-HMD" firstAttribute="width" secondItem="ucX-b1-0uu" secondAttribute="width" id="UoP-Wl-TQe"/>
+                                    <constraint firstAttribute="trailing" secondItem="uCF-dc-HMD" secondAttribute="trailing" id="gNz-E6-HQi"/>
+                                    <constraint firstAttribute="trailing" secondItem="fir-Wc-lXd" secondAttribute="trailing" id="lbg-GU-eyG"/>
+                                    <constraint firstItem="Jaw-ei-8dO" firstAttribute="leading" secondItem="ucX-b1-0uu" secondAttribute="leading" id="rNJ-1c-A2Y"/>
+                                    <constraint firstAttribute="bottom" secondItem="Jaw-ei-8dO" secondAttribute="bottom" id="z2A-cn-G4B"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="ucX-b1-0uu" secondAttribute="trailing" id="JWe-H1-XEE"/>
+                            <constraint firstItem="yBp-V4-0gl" firstAttribute="top" secondItem="ucX-b1-0uu" secondAttribute="bottom" id="VMu-z8-KSi"/>
+                            <constraint firstItem="ucX-b1-0uu" firstAttribute="top" secondItem="VTA-sp-zai" secondAttribute="top" id="Z4f-jQ-t7B"/>
+                            <constraint firstItem="ucX-b1-0uu" firstAttribute="leading" secondItem="VTA-sp-zai" secondAttribute="leading" id="c4U-OG-0uU"/>
+                            <constraint firstItem="ucX-b1-0uu" firstAttribute="centerX" secondItem="VTA-sp-zai" secondAttribute="centerX" id="eK9-mN-8cH"/>
+                            <constraint firstItem="ucX-b1-0uu" firstAttribute="centerY" secondItem="VTA-sp-zai" secondAttribute="centerY" id="lDc-Ia-XKu"/>
+                        </constraints>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="375" height="1150"/>
+                    <connections>
+                        <outlet property="mapView" destination="Jaw-ei-8dO" id="YOE-JD-8Aj"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KJi-Bf-79s" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1853.5999999999999" y="114.24287856071965"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Railstation" width="500" height="331"/>
+    </resources>
+</document>
