@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		145C43C91E848587002956F7 /* LocationDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145C43C81E848587002956F7 /* LocationDetailViewController.swift */; };
+		145C43CD1E849593002956F7 /* GalleryCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145C43CC1E849593002956F7 /* GalleryCollectionView.swift */; };
+		145C43D01E8499B4002956F7 /* GalleryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145C43CF1E8499B4002956F7 /* GalleryCollectionViewCell.swift */; };
+		145C43D31E89168F002956F7 /* mapstyle.json in Resources */ = {isa = PBXBuildFile; fileRef = 145C43D21E89168F002956F7 /* mapstyle.json */; };
+		145C43D61E891770002956F7 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145C43D51E891770002956F7 /* MapViewController.swift */; };
 		14B8C6571E81EA8900834712 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B8C6561E81EA8900834712 /* AppDelegate.swift */; };
 		14B8C65C1E81EA8900834712 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 14B8C65A1E81EA8900834712 /* Main.storyboard */; };
 		14B8C65E1E81EA8900834712 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 14B8C65D1E81EA8900834712 /* Assets.xcassets */; };
@@ -20,7 +24,11 @@
 
 /* Begin PBXFileReference section */
 		065D07C0E8B4305C8DB80658 /* Pods-Historic.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Historic.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Historic/Pods-Historic.debug.xcconfig"; sourceTree = "<group>"; };
-		145C43C81E848587002956F7 /* LocationDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationDetailViewController.swift; sourceTree = "<group>"; };
+		145C43C81E848587002956F7 /* LocationDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocationDetailViewController.swift; path = Historic/View/LocationDetailViewController.swift; sourceTree = SOURCE_ROOT; };
+		145C43CC1E849593002956F7 /* GalleryCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryCollectionView.swift; sourceTree = "<group>"; };
+		145C43CF1E8499B4002956F7 /* GalleryCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryCollectionViewCell.swift; sourceTree = "<group>"; };
+		145C43D21E89168F002956F7 /* mapstyle.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = mapstyle.json; sourceTree = "<group>"; };
+		145C43D51E891770002956F7 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		14B8C6531E81EA8900834712 /* Historic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Historic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		14B8C6561E81EA8900834712 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		14B8C65B1E81EA8900834712 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -28,7 +36,7 @@
 		14B8C6601E81EA8900834712 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		14B8C6621E81EA8900834712 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		14B8C66A1E81ECE600834712 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
-		14BD65121E83EE070026E4B7 /* MainCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainCollectionViewController.swift; sourceTree = "<group>"; };
+		14BD65121E83EE070026E4B7 /* MainCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainCollectionViewController.swift; path = Historic/View/MainCollectionViewController.swift; sourceTree = SOURCE_ROOT; };
 		14BD65151E83F1DE0026E4B7 /* LocationCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationCollectionViewCell.swift; sourceTree = "<group>"; };
 		1D60EE7B34C93A329C25AECF /* Pods_Historic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Historic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A5F3F750D77F9487A5B3389 /* Pods-Historic.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Historic.release.xcconfig"; path = "Pods/Target Support Files/Pods-Historic/Pods-Historic.release.xcconfig"; sourceTree = "<group>"; };
@@ -46,6 +54,49 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		145C43CA1E849528002956F7 /* LocationDetailView */ = {
+			isa = PBXGroup;
+			children = (
+				145C43CE1E849999002956F7 /* Cells */,
+				145C43CC1E849593002956F7 /* GalleryCollectionView.swift */,
+				145C43C81E848587002956F7 /* LocationDetailViewController.swift */,
+			);
+			path = LocationDetailView;
+			sourceTree = "<group>";
+		};
+		145C43CB1E849541002956F7 /* MainCollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				14BD65141E83F1CA0026E4B7 /* Cells */,
+				14BD65121E83EE070026E4B7 /* MainCollectionViewController.swift */,
+			);
+			path = MainCollectionView;
+			sourceTree = "<group>";
+		};
+		145C43CE1E849999002956F7 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				145C43CF1E8499B4002956F7 /* GalleryCollectionViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		145C43D11E891668002956F7 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				145C43D21E89168F002956F7 /* mapstyle.json */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		145C43D41E891757002956F7 /* MapView */ = {
+			isa = PBXGroup;
+			children = (
+				145C43D51E891770002956F7 /* MapViewController.swift */,
+			);
+			path = MapView;
+			sourceTree = "<group>";
+		};
 		14B8C64A1E81EA8900834712 = {
 			isa = PBXGroup;
 			children = (
@@ -67,6 +118,7 @@
 		14B8C6551E81EA8900834712 /* Historic */ = {
 			isa = PBXGroup;
 			children = (
+				145C43D11E891668002956F7 /* Helpers */,
 				14BD65111E83EDF50026E4B7 /* View */,
 				14B8C6561E81EA8900834712 /* AppDelegate.swift */,
 				14B8C65A1E81EA8900834712 /* Main.storyboard */,
@@ -81,9 +133,9 @@
 		14BD65111E83EDF50026E4B7 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				14BD65141E83F1CA0026E4B7 /* Cells */,
-				14BD65121E83EE070026E4B7 /* MainCollectionViewController.swift */,
-				145C43C81E848587002956F7 /* LocationDetailViewController.swift */,
+				145C43D41E891757002956F7 /* MapView */,
+				145C43CB1E849541002956F7 /* MainCollectionView */,
+				145C43CA1E849528002956F7 /* LocationDetailView */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -93,7 +145,8 @@
 			children = (
 				14BD65151E83F1DE0026E4B7 /* LocationCollectionViewCell.swift */,
 			);
-			path = Cells;
+			name = Cells;
+			path = ../Cells;
 			sourceTree = "<group>";
 		};
 		2613377DDDB531B2F96D7697 /* Frameworks */ = {
@@ -176,6 +229,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				145C43D31E89168F002956F7 /* mapstyle.json in Resources */,
 				14B8C6611E81EA8900834712 /* LaunchScreen.storyboard in Resources */,
 				14B8C65E1E81EA8900834712 /* Assets.xcassets in Resources */,
 				14B8C65C1E81EA8900834712 /* Main.storyboard in Resources */,
@@ -240,8 +294,11 @@
 				14B8C66B1E81ECE600834712 /* Colors.swift in Sources */,
 				14BD65131E83EE070026E4B7 /* MainCollectionViewController.swift in Sources */,
 				14BD65161E83F1DE0026E4B7 /* LocationCollectionViewCell.swift in Sources */,
+				145C43CD1E849593002956F7 /* GalleryCollectionView.swift in Sources */,
 				14B8C6571E81EA8900834712 /* AppDelegate.swift in Sources */,
+				145C43D01E8499B4002956F7 /* GalleryCollectionViewCell.swift in Sources */,
 				145C43C91E848587002956F7 /* LocationDetailViewController.swift in Sources */,
+				145C43D61E891770002956F7 /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -365,6 +422,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = ZB2PMQN3C6;
 				INFOPLIST_FILE = Historic/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = me.kirillvarlamov.Historic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -379,6 +437,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = ZB2PMQN3C6;
 				INFOPLIST_FILE = Historic/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = me.kirillvarlamov.Historic;
 				PRODUCT_NAME = "$(TARGET_NAME)";

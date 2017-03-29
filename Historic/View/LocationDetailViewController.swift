@@ -9,7 +9,7 @@
 import UIKit
 import GoogleMaps
 
-class LocationDetailViewController: UIViewController {
+class LocationDetailViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
     @IBOutlet weak var mapView: GMSMapView!
 
@@ -19,18 +19,32 @@ class LocationDetailViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        let camera = GMSCameraPosition.camera(withLatitude: -33.86,
-                                              longitude: 151.20, zoom: 6)
+        let camera = GMSCameraPosition.camera(withLatitude: 43.10,
+                                              longitude: 131.87, zoom: 12)
         self.mapView.isMyLocationEnabled = true
         self.mapView.camera = camera
         
         let marker = GMSMarker()
-        marker.position = CLLocationCoordinate2DMake(-33.86, 151.20)
-        marker.title = "Sydney"
-        marker.snippet = "Australia"
+        marker.position = CLLocationCoordinate2DMake(43.10, 131.87)
+        marker.title = "Vladivostok"
+        marker.snippet = "Russia"
         marker.map = mapView
     }
     
+    // Mark: - CollectionViewDelegateMethods
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 10
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "galleryCell", for: indexPath) as! GalleryCollectionViewCell
+        return cell
+    }
+    
+    @IBAction func closeButtonTap(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
 
     /*
     // MARK: - Navigation

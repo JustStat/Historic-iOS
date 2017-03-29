@@ -11,8 +11,9 @@ import AnimatedCollectionViewLayout
 
 private let reuseIdentifier = "locationCell"
 
-class MainCollectionViewController: UICollectionViewController {
+class MainCollectionViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
+    @IBOutlet weak var collectionView: UICollectionView!
     var direction: UICollectionViewScrollDirection = .horizontal
     
     override func viewDidLoad() {
@@ -21,33 +22,31 @@ class MainCollectionViewController: UICollectionViewController {
         
         // Turn on the paging mode for auto snaping support.
         collectionView?.isPagingEnabled = true
+        self.modalTransitionStyle = .flipHorizontal
         
         if let layout = collectionView?.collectionViewLayout as? AnimatedCollectionViewLayout {
             layout.scrollDirection = direction
             layout.animator = LinearCardAttributesAnimator()
         }
+        
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    override var prefersStatusBarHidden: Bool { return true }
-}
 
-extension MainCollectionViewController: UICollectionViewDelegateFlowLayout {
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
     
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 10
     }
     
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
-        
+        cell.clipsToBounds = true
         return cell
     }
     
@@ -57,6 +56,7 @@ extension MainCollectionViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return .zero
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
@@ -66,5 +66,5 @@ extension MainCollectionViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 0
     }
-
+    
 }
