@@ -42,15 +42,22 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
     }
     
     func addMarkers(map: GMSMapView) {
+        let markerView = PostView(frame: CGRect(origin: .zero, size: CGSize(width: 80, height: 80)))
         let marker = GMSMarker(position: CLLocationCoordinate2D(latitude: -33.86, longitude: 151.20))
-        marker.title = "Railstation"
-        marker.icon = UIImage(named: "RailstationMapIcon")
+        marker.iconView = markerView
+        marker.title = "Жележнодорожный вокзал"
+        marker.snippet = "Подробнее"
         marker.map = map
+        
+        let marker2 = GMSMarker(position: CLLocationCoordinate2D(latitude: -33.90, longitude: 151.20))
+        marker2.iconView = markerView
+        marker2.title = "Жележнодорожный вокзал"
+        marker2.snippet = "Подробнее"
+        marker2.map = map
     }
     
-    func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
+    func mapView(_ mapView: GMSMapView, didTapInfoWindowOf marker: GMSMarker) {
         performSegue(withIdentifier: "showDetail", sender: self)
-        return true
     }
     
 

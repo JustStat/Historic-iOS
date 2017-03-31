@@ -307,7 +307,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" modalTransitionStyle="flipHorizontal" navigationBarHidden="YES" id="PHO-f4-Ehu" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="GK0-df-Fpx">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="GK0-df-Fpx">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -325,6 +325,6 @@
         <image name="Railstation" width="500" height="331"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Vy6-bK-m92"/>
+        <segue reference="GOH-2t-Jje"/>
     </inferredMetricsTieBreakers>
 </document>

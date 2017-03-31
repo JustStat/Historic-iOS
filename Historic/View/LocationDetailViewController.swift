@@ -24,11 +24,26 @@ class LocationDetailViewController: UIViewController, UICollectionViewDelegate, 
         self.mapView.isMyLocationEnabled = true
         self.mapView.camera = camera
         
+        let markerView = UIView(frame: CGRect(origin: .zero, size: CGSize(width: 50, height: 50)))
+        markerView.backgroundColor = .white
+        
         let marker = GMSMarker()
+        marker.iconView = markerView
         marker.position = CLLocationCoordinate2DMake(43.10, 131.87)
-        marker.title = "Vladivostok"
-        marker.snippet = "Russia"
+//        marker.title = "Vladivostok"
+//        marker.snippet = "Russia"
         marker.map = mapView
+        
+        do {
+            if let styleURL = Bundle.main.url(forResource: "mapstyle", withExtension: "json") {
+                mapView.mapStyle = try GMSMapStyle(contentsOfFileURL: styleURL)
+            } else {
+                NSLog("Unable to find style.json")
+            }
+        } catch {
+            NSLog("One or more of the map styles failed to load. \(error)")
+        }
+
     }
     
     // Mark: - CollectionViewDelegateMethods
