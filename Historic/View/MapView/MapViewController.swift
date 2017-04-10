@@ -9,8 +9,9 @@
 import UIKit
 import GoogleMaps
 
-class MapViewController: UIViewController, GMSMapViewDelegate {
+class MapViewController: UIViewController, GMSMapViewDelegate, GMUClusterManagerDelegate {
     @IBOutlet weak var mapView: GMSMapView!
+    private var clusterManager: GMUClusterManager!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,39 +37,60 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
         } catch {
             NSLog("One or more of the map styles failed to load. \(error)")
         }
-
-        addMarkers(map: mapView)
+        
+        initClasterization(cameraPos: camera)
 
     }
     
-    func addMarkers(map: GMSMapView) {
-        let markerView = PostView(frame: CGRect(origin: .zero, size: CGSize(width: 80, height: 80)))
-        let marker = GMSMarker(position: CLLocationCoordinate2D(latitude: -33.86, longitude: 151.20))
-        marker.iconView = markerView
-        marker.title = "Жележнодорожный вокзал"
-        marker.snippet = "Подробнее"
-        marker.map = map
+    func addMarkers() {
+        let marker = PlaceMarker(position: CLLocationCoordinate2D(latitude: -33.86, longitude: 151.20), title: "Жележнодорожный вокзал")
+        clusterManager.add(marker)
         
-        let marker2 = GMSMarker(position: CLLocationCoordinate2D(latitude: -33.90, longitude: 151.20))
-        marker2.iconView = markerView
-        marker2.title = "Жележнодорожный вокзал"
-        marker2.snippet = "Подробнее"
-        marker2.map = map
+        let marker2 = PlaceMarker(position: CLLocationCoordinate2D(latitude: -33.70, longitude: 151.20), title: "Жележнодорожный вокзал")
+        clusterManager.add(marker2)
+        
+        let marker3 = PlaceMarker(position: CLLocationCoordinate2D(latitude: -33.80, longitude: 151.20), title: "Жележнодорожный вокзал")
+        clusterManager.add(marker3)
+        
+        let marker4 = PlaceMarker(position: CLLocationCoordinate2D(latitude: -33.90, longitude: 151.20), title: "Жележнодорожный вокзал")
+        clusterManager.add(marker4)
+        
+        let marker5 = PlaceMarker(position: CLLocationCoordinate2D(latitude: -33.75, longitude: 151.20), title: "Жележнодорожный вокзал")
+        clusterManager.add(marker5)
+        
+        let marker6 = PlaceMarker(position: CLLocationCoordinate2D(latitude: -33.73, longitude: 151.20), title: "Жележнодорожный вокзал")
+        clusterManager.add(marker6)
+
+    }
+    
+    func initClasterization(cameraPos: GMSCameraPosition) {
+        let iconGenerator = GMUDefaultClusterIconGenerator()
+        let algorithm = GMUNonHierarchicalDistanceBasedAlgorithm()
+        let renderer = GMUDefaultClusterRenderer(mapView: mapView,
+                                                 clusterIconGenerator: iconGenerator)
+        clusterManager = GMUClusterManager(map: mapView, algorithm: algorithm,
+                                           renderer: renderer)
+        clusterManager.setDelegate(self, mapDelegate: self)
+        addMarkers()
+        clusterManager.cluster()
+
     }
     
     func mapView(_ mapView: GMSMapView, didTapInfoWindowOf marker: GMSMarker) {
         performSegue(withIdentifier: "showDetail", sender: self)
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func clusterManager(_ clusterManager: GMUClusterManager, didTap cluster: GMUCluster) -> Bool {
+        let newCamera = GMSCameraPosition.camera(withTarget: cluster.position,
+                                                 zoom: mapView.camera.zoom + 1)
+        let update = GMSCameraUpdate.setCamera(newCamera)
+        mapView.moveCamera(update)
+        return true
     }
-    */
+    
+    func clusterManager(_ clusterManager: GMUClusterManager, didTap clusterItem: GMUClusterItem) -> Bool {
+        performSegue(withIdentifier: "showDetail", sender: self)
+        return true
+    }
 
 }

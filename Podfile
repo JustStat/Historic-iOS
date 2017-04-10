@@ -7,5 +7,4 @@ target 'Historic' do
   # Pods for Historic
   pod 'AnimatedCollectionViewLayout'
   pod 'GoogleMaps'
-
 end
