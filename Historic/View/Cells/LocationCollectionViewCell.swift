@@ -10,6 +10,7 @@ import UIKit
 
 class LocationCollectionViewCell: UICollectionViewCell {
 
+    @IBOutlet weak var locationNameLabel: UILabel!
     @IBOutlet weak var locationImage: UIImageView!
     
 }

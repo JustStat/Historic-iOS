@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16E183b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="PHO-f4-Ehu">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E183b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="PHO-f4-Ehu">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -44,7 +44,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="locationCell" id="Eme-Fz-BGi" customClass="LocationCollectionViewCell" customModule="Historic" customModuleProvider="target">
-                                        <rect key="frame" x="36" y="0.0" width="304" height="584"/>
+                                        <rect key="frame" x="35.5" y="0.0" width="304" height="584"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="304" height="584"/>
@@ -52,12 +52,9 @@
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Railstation" translatesAutoresizingMaskIntoConstraints="NO" id="4AH-1L-oKR">
                                                     <rect key="frame" x="0.0" y="0.0" width="304" height="584"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" secondItem="4AH-1L-oKR" secondAttribute="height" multiplier="1:1" constant="-280" id="Mn2-iL-ied"/>
-                                                    </constraints>
                                                 </imageView>
                                                 <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fEv-Nd-I45">
-                                                    <rect key="frame" x="0.0" y="228" width="304" height="128"/>
+                                                    <rect key="frame" x="0.0" y="224" width="304" height="128"/>
                                                     <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="4c6-k6-bfD">
                                                         <rect key="frame" x="0.0" y="0.0" width="304" height="128"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -86,16 +83,17 @@
                                         <color key="backgroundColor" red="0.1118204288" green="1" blue="0.14280859600000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstItem="4AH-1L-oKR" firstAttribute="leading" secondItem="Eme-Fz-BGi" secondAttribute="leading" id="1n5-Mf-Z6g"/>
+                                            <constraint firstAttribute="bottomMargin" secondItem="4AH-1L-oKR" secondAttribute="bottom" constant="-8" id="51m-RZ-3cu"/>
                                             <constraint firstAttribute="trailing" secondItem="4AH-1L-oKR" secondAttribute="trailing" id="Lf4-Ww-nau"/>
-                                            <constraint firstItem="fEv-Nd-I45" firstAttribute="width" secondItem="4AH-1L-oKR" secondAttribute="width" id="TzA-0X-tdZ"/>
                                             <constraint firstItem="4AH-1L-oKR" firstAttribute="top" secondItem="Eme-Fz-BGi" secondAttribute="top" id="jbA-p4-xtO"/>
                                             <constraint firstItem="fEv-Nd-I45" firstAttribute="leading" secondItem="Eme-Fz-BGi" secondAttribute="leadingMargin" constant="-8" id="kBL-1D-K2v"/>
                                             <constraint firstItem="fEv-Nd-I45" firstAttribute="centerX" secondItem="4AH-1L-oKR" secondAttribute="centerX" id="l9t-3H-FYZ"/>
                                             <constraint firstAttribute="trailingMargin" secondItem="fEv-Nd-I45" secondAttribute="trailing" constant="-8" id="mus-QT-gl5"/>
-                                            <constraint firstItem="fEv-Nd-I45" firstAttribute="centerY" secondItem="4AH-1L-oKR" secondAttribute="centerY" id="nGT-7y-UMh"/>
+                                            <constraint firstItem="fEv-Nd-I45" firstAttribute="centerY" secondItem="4AH-1L-oKR" secondAttribute="centerY" constant="-4" id="nGT-7y-UMh"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="locationImage" destination="4AH-1L-oKR" id="ewR-dQ-6A2"/>
+                                            <outlet property="locationNameLabel" destination="qeB-DV-stp" id="Swh-Qi-fXy"/>
                                             <segue destination="gEu-Bl-sjV" kind="show" id="GOH-2t-Jje"/>
                                         </connections>
                                     </collectionViewCell>
@@ -219,7 +217,7 @@
                                         </collectionViewFlowLayout>
                                         <cells>
                                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="galleryCell" id="7nI-0l-pXA" customClass="GalleryCollectionViewCell" customModule="Historic" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="2" width="110" height="125"/>
+                                                <rect key="frame" x="0.0" y="1.5" width="110" height="125"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                                     <rect key="frame" x="0.0" y="0.0" width="110" height="125"/>
@@ -307,7 +305,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" modalTransitionStyle="flipHorizontal" navigationBarHidden="YES" id="PHO-f4-Ehu" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="GK0-df-Fpx">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="GK0-df-Fpx">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

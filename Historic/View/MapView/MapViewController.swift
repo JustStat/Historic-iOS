@@ -42,26 +42,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate, GMUClusterManager
 
     }
     
-    func addMarkers() {
-        let marker = PlaceMarker(position: CLLocationCoordinate2D(latitude: -33.86, longitude: 151.20), title: "Жележнодорожный вокзал")
-        clusterManager.add(marker)
-        
-        let marker2 = PlaceMarker(position: CLLocationCoordinate2D(latitude: -33.70, longitude: 151.20), title: "Жележнодорожный вокзал")
-        clusterManager.add(marker2)
-        
-        let marker3 = PlaceMarker(position: CLLocationCoordinate2D(latitude: -33.80, longitude: 151.20), title: "Жележнодорожный вокзал")
-        clusterManager.add(marker3)
-        
-        let marker4 = PlaceMarker(position: CLLocationCoordinate2D(latitude: -33.90, longitude: 151.20), title: "Жележнодорожный вокзал")
-        clusterManager.add(marker4)
-        
-        let marker5 = PlaceMarker(position: CLLocationCoordinate2D(latitude: -33.75, longitude: 151.20), title: "Жележнодорожный вокзал")
-        clusterManager.add(marker5)
-        
-        let marker6 = PlaceMarker(position: CLLocationCoordinate2D(latitude: -33.73, longitude: 151.20), title: "Жележнодорожный вокзал")
-        clusterManager.add(marker6)
-
-    }
+    func addMarkers() {}
     
     func initClasterization(cameraPos: GMSCameraPosition) {
         let iconGenerator = GMUDefaultClusterIconGenerator()

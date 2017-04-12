@@ -7,4 +7,6 @@ target 'Historic' do
   # Pods for Historic
   pod 'AnimatedCollectionViewLayout'
   pod 'GoogleMaps'
+  pod 'SwiftyJSON'
+  pod 'SDWebImage'
 end
