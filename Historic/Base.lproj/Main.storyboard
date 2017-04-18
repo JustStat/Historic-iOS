@@ -35,7 +35,7 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="JdZ-iH-eGX">
                                 <rect key="frame" x="0.0" y="70" width="375" height="597"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" red="0.91776354419999995" green="0.41356177240000003" blue="0.052544487850000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="bew-wZ-InN" customClass="AnimatedCollectionViewLayout" customModule="AnimatedCollectionViewLayout">
                                     <size key="itemSize" width="304" height="584"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -94,7 +94,7 @@
                                         <connections>
                                             <outlet property="locationImage" destination="4AH-1L-oKR" id="ewR-dQ-6A2"/>
                                             <outlet property="locationNameLabel" destination="qeB-DV-stp" id="Swh-Qi-fXy"/>
-                                            <segue destination="gEu-Bl-sjV" kind="show" id="GOH-2t-Jje"/>
+                                            <segue destination="gEu-Bl-sjV" kind="show" identifier="detail" id="GOH-2t-Jje"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -135,9 +135,12 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="baf-KC-tVB">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="63"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qOl-zs-ueY">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qOl-zs-ueY">
                                         <rect key="frame" x="321" y="25" width="46" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="46" id="NES-3l-EEB"/>
+                                            <constraint firstAttribute="height" constant="30" id="hJ2-9m-E9Z"/>
+                                        </constraints>
                                         <state key="normal" title="Button"/>
                                         <connections>
                                             <segue destination="tlu-nS-Jwo" kind="presentation" id="g83-Da-6mZ"/>
@@ -147,6 +150,8 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="63" id="Uw0-AN-mgz"/>
+                                    <constraint firstItem="qOl-zs-ueY" firstAttribute="top" secondItem="baf-KC-tVB" secondAttribute="top" constant="25" id="lnr-mY-zeb"/>
+                                    <constraint firstAttribute="trailing" secondItem="qOl-zs-ueY" secondAttribute="trailing" constant="8" id="pVT-5u-uFl"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ELk-xh-fNb" customClass="GMSMapView">
@@ -239,7 +244,7 @@
                                             <outlet property="delegate" destination="gEu-Bl-sjV" id="FBa-RR-dYR"/>
                                         </connections>
                                     </collectionView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Railstation" translatesAutoresizingMaskIntoConstraints="NO" id="fir-Wc-lXd">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Railstation" translatesAutoresizingMaskIntoConstraints="NO" id="fir-Wc-lXd">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="375"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="fir-Wc-lXd" secondAttribute="height" multiplier="1:1" id="Gj2-I9-5kD"/>
@@ -293,6 +298,9 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="1150"/>
                     <connections>
+                        <outlet property="descriptionTextView" destination="uCF-dc-HMD" id="CIt-T6-PDb"/>
+                        <outlet property="imagesCollectionView" destination="BU7-Ac-63R" id="KAt-kL-O15"/>
+                        <outlet property="mainImageView" destination="fir-Wc-lXd" id="zRy-G9-68Y"/>
                         <outlet property="mapView" destination="Jaw-ei-8dO" id="YOE-JD-8Aj"/>
                     </connections>
                 </viewController>
@@ -305,7 +313,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" modalTransitionStyle="flipHorizontal" navigationBarHidden="YES" id="PHO-f4-Ehu" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="GK0-df-Fpx">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="GK0-df-Fpx">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -323,6 +331,6 @@
         <image name="Railstation" width="500" height="331"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="GOH-2t-Jje"/>
+        <segue reference="Vy6-bK-m92"/>
     </inferredMetricsTieBreakers>
 </document>

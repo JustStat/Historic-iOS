@@ -8,6 +8,7 @@
 
 import UIKit
 import GoogleMaps
+import SwiftSpinner
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,6 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         UINavigationBar.appearance().backgroundColor = UIColor.appColor()
+        SwiftSpinner.appearance().backgroundColor = UIColor.appColor()
         
         GMSServices.provideAPIKey("AIzaSyCCCOozQXE18Dg3X_z4b5ZkkLeQpXvF7Ks")
         

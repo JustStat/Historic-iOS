@@ -8,6 +8,8 @@
 
 import UIKit
 import GoogleMaps
+import SwiftSpinner
+import SwiftyJSON
 
 class MapViewController: UIViewController, GMSMapViewDelegate, GMUClusterManagerDelegate {
     @IBOutlet weak var mapView: GMSMapView!
@@ -24,7 +26,8 @@ class MapViewController: UIViewController, GMSMapViewDelegate, GMUClusterManager
     }
     
     func initMap() {
-        let camera = GMSCameraPosition.camera(withLatitude: -33.86, longitude: 151.20, zoom: 14.0)
+        let camera = GMSCameraPosition.camera(withLatitude: 43.10,
+                                              longitude: 131.87, zoom: 12)
         mapView.camera = camera
         mapView.delegate = self
         
@@ -42,7 +45,36 @@ class MapViewController: UIViewController, GMSMapViewDelegate, GMUClusterManager
 
     }
     
-    func addMarkers() {}
+    func addMarkers() {
+        SwiftSpinner.show("Загрузка карты", animated: true)
+        let config = URLSessionConfiguration.default
+        let session = URLSession(configuration: config)
+        let url = URL(string: "http://62.109.7.158/api/places/")!
+        
+        let task = session.dataTask(with: url, completionHandler: {
+            (data, response, error) in
+            
+            if error != nil {
+                
+                print(error!.localizedDescription)
+                
+            } else {
+                let json = JSON(data: data!)
+                for i in 0..<json["count"].int! {
+                    let placeInfo = json["results"][i]
+                    let place = Place(id: placeInfo["id"].int!, position: CLLocationCoordinate2DMake(CLLocationDegrees(placeInfo["locations"][0]["latitude"].float!), CLLocationDegrees(placeInfo["locations"][0]["longitude"].float!)), name: placeInfo["name"].string!, image: PlaceImage(thumb: placeInfo["main_thumb"].string, original: placeInfo["main_full"].string))
+                    self.clusterManager.add(place)
+                }
+                DispatchQueue.main.sync() {
+                    SwiftSpinner.hide()
+                    self.clusterManager.cluster()
+                }
+                
+            }
+            
+        })
+        task.resume()
+    }
     
     func initClasterization(cameraPos: GMSCameraPosition) {
         let iconGenerator = GMUDefaultClusterIconGenerator()
@@ -53,8 +85,6 @@ class MapViewController: UIViewController, GMSMapViewDelegate, GMUClusterManager
                                            renderer: renderer)
         clusterManager.setDelegate(self, mapDelegate: self)
         addMarkers()
-        clusterManager.cluster()
-
     }
     
     func mapView(_ mapView: GMSMapView, didTapInfoWindowOf marker: GMSMarker) {
@@ -70,8 +100,16 @@ class MapViewController: UIViewController, GMSMapViewDelegate, GMUClusterManager
     }
     
     func clusterManager(_ clusterManager: GMUClusterManager, didTap clusterItem: GMUClusterItem) -> Bool {
-        performSegue(withIdentifier: "showDetail", sender: self)
+        performSegue(withIdentifier: "showDetail", sender: clusterItem)
         return true
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "detail" {
+            let controller = segue.destination as! LocationDetailViewController
+            controller.placeId = (sender as! Place).id
+            print((sender as! Place).id)
+        }
     }
 
 }

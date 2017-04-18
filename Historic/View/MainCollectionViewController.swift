@@ -9,6 +9,7 @@
 import UIKit
 import AnimatedCollectionViewLayout
 import SwiftyJSON
+import SwiftSpinner
 
 private let reuseIdentifier = "locationCell"
 
@@ -32,11 +33,12 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             layout.scrollDirection = direction
             layout.animator = LinearCardAttributesAnimator()
         }
+        self.collectionView.backgroundColor = UIColor(patternImage: UIImage(named: "collectionBackground")!)
         getPlaces()
-        
     }
     
     func getPlaces() {
+        SwiftSpinner.show("Загрузка списка", animated: true)
         let config = URLSessionConfiguration.default
         let session = URLSession(configuration: config)
         let url = URL(string: "http://62.109.7.158/api/places/")!
@@ -50,12 +52,16 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                 
             } else {
                 let json = JSON(data: data!)
-                for i in 0...json["count"].int! - 1 {
+                for i in 0..<json["count"].int! {
                     let placeInfo = json["results"][i]
                     let place = Place(id: placeInfo["id"].int!, position: CLLocationCoordinate2DMake(CLLocationDegrees(placeInfo["locations"][0]["latitude"].float!), CLLocationDegrees(placeInfo["locations"][0]["longitude"].float!)), name: placeInfo["name"].string!, image: PlaceImage(thumb: placeInfo["main_thumb"].string, original: placeInfo["main_full"].string))
                     self.placesList.append(place)
                 }
-                self.collectionView.reloadData()
+                 DispatchQueue.main.sync() {
+                    self.collectionView.reloadData()
+                    SwiftSpinner.hide()
+                }
+                
             }
             
         })
@@ -101,6 +107,13 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 0
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "detail" {
+            let controller = segue.destination as! LocationDetailViewController
+            controller.placeId = placesList[(self.collectionView.indexPath(for: sender as! UICollectionViewCell))!.row].id
+        }
     }
     
 }

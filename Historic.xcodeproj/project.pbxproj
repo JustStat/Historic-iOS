@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		14321E3E1E9DB62100F022BE /* PlaceDetailed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14321E3D1E9DB62100F022BE /* PlaceDetailed.swift */; };
 		145C43C91E848587002956F7 /* LocationDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145C43C81E848587002956F7 /* LocationDetailViewController.swift */; };
 		145C43CD1E849593002956F7 /* GalleryCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145C43CC1E849593002956F7 /* GalleryCollectionView.swift */; };
 		145C43D01E8499B4002956F7 /* GalleryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145C43CF1E8499B4002956F7 /* GalleryCollectionViewCell.swift */; };
@@ -47,6 +48,7 @@
 
 /* Begin PBXFileReference section */
 		065D07C0E8B4305C8DB80658 /* Pods-Historic.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Historic.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Historic/Pods-Historic.debug.xcconfig"; sourceTree = "<group>"; };
+		14321E3D1E9DB62100F022BE /* PlaceDetailed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceDetailed.swift; sourceTree = "<group>"; };
 		145C43C81E848587002956F7 /* LocationDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocationDetailViewController.swift; path = Historic/View/LocationDetailViewController.swift; sourceTree = SOURCE_ROOT; };
 		145C43CC1E849593002956F7 /* GalleryCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryCollectionView.swift; sourceTree = "<group>"; };
 		145C43CF1E8499B4002956F7 /* GalleryCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -203,6 +205,7 @@
 			isa = PBXGroup;
 			children = (
 				14931C291E96FAEE00F4DDBF /* Place.swift */,
+				14321E3D1E9DB62100F022BE /* PlaceDetailed.swift */,
 			);
 			path = Place;
 			sourceTree = "<group>";
@@ -537,6 +540,7 @@
 				14DB26261E96FF5000FA5116 /* GMUStyle.m in Sources */,
 				14DB26231E96FF5000FA5116 /* GMUPlacemark.m in Sources */,
 				14DB26171E96FF5000FA5116 /* GMUWrappingDictionaryKey.m in Sources */,
+				14321E3E1E9DB62100F022BE /* PlaceDetailed.swift in Sources */,
 				14DB261C1E96FF5000FA5116 /* GMUGeoJSONParser.m in Sources */,
 				14B8C6571E81EA8900834712 /* AppDelegate.swift in Sources */,
 				145C43D01E8499B4002956F7 /* GalleryCollectionViewCell.swift in Sources */,

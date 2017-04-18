@@ -9,4 +9,5 @@ target 'Historic' do
   pod 'GoogleMaps'
   pod 'SwiftyJSON'
   pod 'SDWebImage'
+  pod 'SwiftSpinner'
 end
