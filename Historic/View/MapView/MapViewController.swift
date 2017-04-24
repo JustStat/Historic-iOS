@@ -10,6 +10,8 @@ import UIKit
 import GoogleMaps
 import SwiftSpinner
 import SwiftyJSON
+import RealmSwift
+
 
 class MapViewController: UIViewController, GMSMapViewDelegate, GMUClusterManagerDelegate {
     @IBOutlet weak var mapView: GMSMapView!
@@ -17,13 +19,69 @@ class MapViewController: UIViewController, GMSMapViewDelegate, GMUClusterManager
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        initMap();
+        loadPlaces()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    func loadPlaces() {
+        SwiftSpinner.show("Загрузка данных", animated: true)
+        var places: Array<Place> = []
+        let config = URLSessionConfiguration.default
+        let session = URLSession(configuration: config)
+        let url = URL(string: "http://62.109.7.158/api/places/")!
+        let realm = try! Realm()
+        try! realm.write {
+            realm.deleteAll()
+        }
+        
+        
+        let task = session.dataTask(with: url, completionHandler: {
+            (data, response, error) in
+            
+            if error != nil {
+                
+                print(error!.localizedDescription)
+                
+            } else {
+                let json = JSON(data: data!)
+                for i in 0..<json["count"].int! {
+                    let placeInfo = json["results"][i]
+                    print(placeInfo)
+                    let images = List<PlaceImage>()
+                    let imagesJson = placeInfo["images"].array
+                    if placeInfo["main_thumb"].string == nil || placeInfo["main_full"].string == nil {
+                        continue
+                    }
+                    for image in imagesJson! {
+                        if image["full"].string != nil && image["thumbnail"].string != nil {
+                            images.append(PlaceImage(thumb: image["full"].string!, original: image["thumbnail"].string!))
+                        }
+                    }
+                    let place = Place(id: placeInfo["id"].int!, position: CLLocationCoordinate2DMake(CLLocationDegrees(placeInfo["locations"][0]["latitude"].float!), CLLocationDegrees(placeInfo["locations"][0]["longitude"].float!)), name: placeInfo["name"].string!, image: PlaceImage(thumb: placeInfo["main_thumb"].string!, original: placeInfo["main_full"].string!), desc: placeInfo["description"].string!, images: images)
+                    places.append(place)
+                    
+                }
+                DispatchQueue.main.sync() {
+                    SwiftSpinner.hide()
+                    print(realm.objects(Place.self).count)
+                    for place in places {
+                        try! realm.write() {
+                            realm.add(place)
+                        }
+                    }
+                    print(realm.objects(Place.self).count)
+                    self.initMap();
+                }
+            }
+            
+        })
+        task.resume()
+    }
+
     
     func initMap() {
         let camera = GMSCameraPosition.camera(withLatitude: 43.10,
@@ -46,34 +104,13 @@ class MapViewController: UIViewController, GMSMapViewDelegate, GMUClusterManager
     }
     
     func addMarkers() {
-        SwiftSpinner.show("Загрузка карты", animated: true)
-        let config = URLSessionConfiguration.default
-        let session = URLSession(configuration: config)
-        let url = URL(string: "http://62.109.7.158/api/places/")!
-        
-        let task = session.dataTask(with: url, completionHandler: {
-            (data, response, error) in
-            
-            if error != nil {
-                
-                print(error!.localizedDescription)
-                
-            } else {
-                let json = JSON(data: data!)
-                for i in 0..<json["count"].int! {
-                    let placeInfo = json["results"][i]
-                    let place = Place(id: placeInfo["id"].int!, position: CLLocationCoordinate2DMake(CLLocationDegrees(placeInfo["locations"][0]["latitude"].float!), CLLocationDegrees(placeInfo["locations"][0]["longitude"].float!)), name: placeInfo["name"].string!, image: PlaceImage(thumb: placeInfo["main_thumb"].string, original: placeInfo["main_full"].string))
-                    self.clusterManager.add(place)
-                }
-                DispatchQueue.main.sync() {
-                    SwiftSpinner.hide()
-                    self.clusterManager.cluster()
-                }
-                
-            }
-            
-        })
-        task.resume()
+        let realm = try! Realm()
+        let places = realm.objects(Place.self)
+        print(places[0].lat)
+        for place in places {
+            print(place.lat)
+            self.clusterManager.add(place)
+        }
     }
     
     func initClasterization(cameraPos: GMSCameraPosition) {
@@ -85,6 +122,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate, GMUClusterManager
                                            renderer: renderer)
         clusterManager.setDelegate(self, mapDelegate: self)
         addMarkers()
+        clusterManager.cluster()
     }
     
     func mapView(_ mapView: GMSMapView, didTapInfoWindowOf marker: GMSMarker) {

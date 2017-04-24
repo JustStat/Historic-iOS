@@ -10,6 +10,7 @@ import UIKit
 import AnimatedCollectionViewLayout
 import SwiftyJSON
 import SwiftSpinner
+import RealmSwift
 
 private let reuseIdentifier = "locationCell"
 
@@ -38,34 +39,13 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
     }
     
     func getPlaces() {
-        SwiftSpinner.show("Загрузка списка", animated: true)
-        let config = URLSessionConfiguration.default
-        let session = URLSession(configuration: config)
-        let url = URL(string: "http://62.109.7.158/api/places/")!
-        
-        let task = session.dataTask(with: url, completionHandler: {
-            (data, response, error) in
-            
-            if error != nil {
-                
-                print(error!.localizedDescription)
-                
-            } else {
-                let json = JSON(data: data!)
-                for i in 0..<json["count"].int! {
-                    let placeInfo = json["results"][i]
-                    let place = Place(id: placeInfo["id"].int!, position: CLLocationCoordinate2DMake(CLLocationDegrees(placeInfo["locations"][0]["latitude"].float!), CLLocationDegrees(placeInfo["locations"][0]["longitude"].float!)), name: placeInfo["name"].string!, image: PlaceImage(thumb: placeInfo["main_thumb"].string, original: placeInfo["main_full"].string))
-                    self.placesList.append(place)
-                }
-                 DispatchQueue.main.sync() {
-                    self.collectionView.reloadData()
-                    SwiftSpinner.hide()
-                }
-                
-            }
-            
-        })
-        task.resume()
+        let realm = try! Realm()
+        let places = realm.objects(Place.self)
+        for place in places {
+            print(place)
+            self.placesList.append(place)
+        }
+        self.collectionView.reloadData()
     }
     
     override func didReceiveMemoryWarning() {
@@ -84,9 +64,8 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: LocationCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! LocationCollectionViewCell
-        if (placesList[indexPath.row].image.original != nil) {
-            cell.locationImage.sd_setImage(with: URL(string: placesList[indexPath.row].image.original!), placeholderImage: UIImage(named: "DefaultImage"))
-        }
+        print(placesList[indexPath.row])
+        cell.locationImage.sd_setImage(with: URL(string: placesList[indexPath.row].image.original!), placeholderImage: UIImage(named: "DefaultImage"))
         cell.locationNameLabel.text = placesList[indexPath.row].name
         cell.clipsToBounds = true
         return cell

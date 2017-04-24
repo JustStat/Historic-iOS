@@ -10,6 +10,7 @@ import UIKit
 import GoogleMaps
 import SwiftyJSON
 import SwiftSpinner
+import RealmSwift
 
 class LocationDetailViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
@@ -18,7 +19,7 @@ class LocationDetailViewController: UIViewController, UICollectionViewDelegate, 
     @IBOutlet weak var mainImageView: UIImageView!
     @IBOutlet weak var mapView: GMSMapView!
     var placeId: Int = 0
-    var place: PlaceDetailed!
+    var place: Place!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,38 +37,15 @@ class LocationDetailViewController: UIViewController, UICollectionViewDelegate, 
         } catch {
             NSLog("One or more of the map styles failed to load. \(error)")
         }
-        SwiftSpinner.show("Загрузка", animated: true)
+//        SwiftSpinner.show("Загрузка", animated: true)
     }
     
     func getPlaceInfo() {
-        let config = URLSessionConfiguration.default
-        let session = URLSession(configuration: config)
-        let url = URL(string: "http://62.109.7.158/api/places/\(placeId)")!
-        
-        let task = session.dataTask(with: url, completionHandler: {
-            (data, response, error) in
-            
-            if error != nil {
-                
-                print(error!.localizedDescription)
-                
-            } else {
-                let json = JSON(data: data!)
-                var images: Array<PlaceImage> = []
-                let imagesJson = json["images"].array
-                for image in imagesJson! {
-                    images.append(PlaceImage(thumb: image["full"].string, original: image["thumbnail"].string))
-                }
-                let place = PlaceDetailed(id: json["id"].int!, position: CLLocationCoordinate2DMake(CLLocationDegrees(json["locations"][0]["latitude"].float!), CLLocationDegrees(json["locations"][0]["longitude"].float!)), name: json["name"].string!, image: PlaceImage(thumb: json["main_thumb"].string, original: json["main_full"].string), desc: json["description"].string!, images: images)
-                DispatchQueue.main.sync() {
-                    self.place = place
-                    self.setInterface()
-                    SwiftSpinner.hide()
-                }
-            }
-            
-        })
-        task.resume()
+        let realm = try! Realm()
+        place = realm.objects(Place.self).filter(NSPredicate(format: "id == 3", argumentArray: [])).first
+        print(place)
+        setInterface()
+
     }
     
     func setInterface() {
@@ -83,6 +61,7 @@ class LocationDetailViewController: UIViewController, UICollectionViewDelegate, 
         let marker = GMSMarker()
         marker.position = place.position
         marker.map = mapView
+//        SwiftSpinner.hide()
 
     }
     
