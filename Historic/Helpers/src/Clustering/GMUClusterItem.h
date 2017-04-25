@@ -24,6 +24,7 @@
  * Returns the position of the item.
  */
 @property(nonatomic, readonly) CLLocationCoordinate2D position;
+@property(nonatomic, readonly) NSInteger placeId;
 
 @end
 

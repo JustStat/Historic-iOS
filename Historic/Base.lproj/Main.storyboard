@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E183b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="PHO-f4-Ehu">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E183b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="PHO-f4-Ehu">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -94,7 +94,7 @@
                                         <connections>
                                             <outlet property="locationImage" destination="4AH-1L-oKR" id="ewR-dQ-6A2"/>
                                             <outlet property="locationNameLabel" destination="qeB-DV-stp" id="Swh-Qi-fXy"/>
-                                            <segue destination="gEu-Bl-sjV" kind="show" identifier="detail" id="GOH-2t-Jje"/>
+                                            <segue destination="gEu-Bl-sjV" kind="show" identifier="showDetail" id="GOH-2t-Jje"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -313,7 +313,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" modalTransitionStyle="flipHorizontal" navigationBarHidden="YES" id="PHO-f4-Ehu" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="GK0-df-Fpx">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="GK0-df-Fpx">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -331,6 +331,6 @@
         <image name="Railstation" width="500" height="331"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Vy6-bK-m92"/>
+        <segue reference="GOH-2t-Jje"/>
     </inferredMetricsTieBreakers>
 </document>

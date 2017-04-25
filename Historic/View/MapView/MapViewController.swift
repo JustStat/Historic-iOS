@@ -28,15 +28,16 @@ class MapViewController: UIViewController, GMSMapViewDelegate, GMUClusterManager
     }
     
     func loadPlaces() {
+        if (true) {
+            initMap()
+            return
+        }
         SwiftSpinner.show("Загрузка данных", animated: true)
         var places: Array<Place> = []
         let config = URLSessionConfiguration.default
         let session = URLSession(configuration: config)
         let url = URL(string: "http://62.109.7.158/api/places/")!
         let realm = try! Realm()
-        try! realm.write {
-            realm.deleteAll()
-        }
         
         
         let task = session.dataTask(with: url, completionHandler: {
@@ -68,8 +69,9 @@ class MapViewController: UIViewController, GMSMapViewDelegate, GMUClusterManager
                 DispatchQueue.main.sync() {
                     SwiftSpinner.hide()
                     print(realm.objects(Place.self).count)
-                    for place in places {
-                        try! realm.write() {
+                    try! realm.write {
+                        realm.deleteAll()
+                        for place in places {
                             realm.add(place)
                         }
                     }
@@ -108,7 +110,6 @@ class MapViewController: UIViewController, GMSMapViewDelegate, GMUClusterManager
         let places = realm.objects(Place.self)
         print(places[0].lat)
         for place in places {
-            print(place.lat)
             self.clusterManager.add(place)
         }
     }
@@ -143,10 +144,12 @@ class MapViewController: UIViewController, GMSMapViewDelegate, GMUClusterManager
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "detail" {
+        if segue.identifier == "showDetail" {
             let controller = segue.destination as! LocationDetailViewController
-            controller.placeId = (sender as! Place).id
-            print((sender as! Place).id)
+            print((sender as! GMUClusterItem).position)
+            print((sender as! GMUClusterItem).placeId)
+            controller.placeId = Int((sender as! GMUClusterItem).placeId)
+            print((sender as! Place).placeId)
         }
     }
 

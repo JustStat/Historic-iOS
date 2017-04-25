@@ -42,7 +42,7 @@ class LocationDetailViewController: UIViewController, UICollectionViewDelegate, 
     
     func getPlaceInfo() {
         let realm = try! Realm()
-        place = realm.objects(Place.self).filter(NSPredicate(format: "id == 3", argumentArray: [])).first
+        place = realm.objects(Place.self).filter(NSPredicate(format: "placeId == \(placeId)", argumentArray: [])).first
         print(place)
         setInterface()
 
@@ -61,8 +61,6 @@ class LocationDetailViewController: UIViewController, UICollectionViewDelegate, 
         let marker = GMSMarker()
         marker.position = place.position
         marker.map = mapView
-//        SwiftSpinner.hide()
-
     }
     
     // Mark: - CollectionViewDelegateMethods

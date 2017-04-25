@@ -35,7 +35,7 @@ class PlaceImage: Object {
 }
 
 class Place: Object, GMUClusterItem {
-    dynamic var id : Int = 0
+    dynamic var placeId : Int = 0
     dynamic var position: CLLocationCoordinate2D {
         return CLLocationCoordinate2D(
             latitude: lat,
@@ -57,7 +57,7 @@ class Place: Object, GMUClusterItem {
     convenience init(id: Int, position: CLLocationCoordinate2D, name: String, image: PlaceImage, desc: String, images: List<PlaceImage>)
     {
         self.init()
-        self.id = id
+        self.placeId = id
         self.name = name
         self.image = image
         self.desc = desc
@@ -68,7 +68,7 @@ class Place: Object, GMUClusterItem {
     
     
     override static func primaryKey() -> String? {
-       return "id"
+       return "placeId"
     }
     
     override static func ignoredProperties() -> [String] {
