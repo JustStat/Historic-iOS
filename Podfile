@@ -11,6 +11,7 @@ target 'Historic' do
   pod 'SDWebImage'
   pod 'SwiftSpinner'
   pod 'RealmSwift'
+  pod 'Agrume'
 end
 
 post_install do |installer|

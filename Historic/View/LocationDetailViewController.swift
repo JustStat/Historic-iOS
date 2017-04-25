@@ -11,6 +11,7 @@ import GoogleMaps
 import SwiftyJSON
 import SwiftSpinner
 import RealmSwift
+import Agrume
 
 class LocationDetailViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
@@ -53,8 +54,8 @@ class LocationDetailViewController: UIViewController, UICollectionViewDelegate, 
         self.descriptionTextView.text = place.desc
         self.imagesCollectionView.reloadData()
         
-        let camera = GMSCameraPosition.camera(withLatitude: 43.10,
-                                              longitude: 131.87, zoom: 12)
+        let camera = GMSCameraPosition.camera(withLatitude: place.lat,
+                                              longitude: place.lon, zoom: 12)
         self.mapView.isMyLocationEnabled = true
         self.mapView.camera = camera
         
@@ -77,6 +78,12 @@ class LocationDetailViewController: UIViewController, UICollectionViewDelegate, 
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "galleryCell", for: indexPath) as! GalleryCollectionViewCell
         cell.imageView.sd_setImage(with: URL(string: place.images[indexPath.row].thumb!), placeholderImage: UIImage(named: "DefaultImage"))
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let agrume = Agrume(imageUrl: URL(string: place.images[indexPath.row].original!)!)
+        agrume.showFrom(self)
+        
     }
     
     @IBAction func closeButtonTap(_ sender: Any) {

@@ -146,10 +146,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate, GMUClusterManager
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDetail" {
             let controller = segue.destination as! LocationDetailViewController
-            print((sender as! GMUClusterItem).position)
-            print((sender as! GMUClusterItem).placeId)
             controller.placeId = Int((sender as! GMUClusterItem).placeId)
-            print((sender as! Place).placeId)
         }
     }
 

@@ -89,7 +89,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "detail" {
+        if segue.identifier == "showDetail" {
             let controller = segue.destination as! LocationDetailViewController
             controller.placeId = placesList[(self.collectionView.indexPath(for: sender as! UICollectionViewCell))!.row].placeId
         }
