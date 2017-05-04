@@ -24,11 +24,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        
-        // Turn on the paging mode for auto snaping support.
         collectionView?.isPagingEnabled = true
-        self.modalTransitionStyle = .flipHorizontal
         
         if let layout = collectionView?.collectionViewLayout as? AnimatedCollectionViewLayout {
             layout.scrollDirection = direction

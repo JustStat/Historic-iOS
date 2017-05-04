@@ -12,6 +12,7 @@ target 'Historic' do
   pod 'SwiftSpinner'
   pod 'RealmSwift'
   pod 'Agrume'
+  pod 'DropDown'
 end
 
 post_install do |installer|

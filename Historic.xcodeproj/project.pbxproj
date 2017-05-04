@@ -21,6 +21,7 @@
 		14B8C66B1E81ECE600834712 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B8C66A1E81ECE600834712 /* Colors.swift */; };
 		14BD65131E83EE070026E4B7 /* MainCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14BD65121E83EE070026E4B7 /* MainCollectionViewController.swift */; };
 		14BD65161E83F1DE0026E4B7 /* LocationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14BD65151E83F1DE0026E4B7 /* LocationCollectionViewCell.swift */; };
+		14D74CCD1EB95F99009E3B62 /* extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D74CCC1EB95F99009E3B62 /* extentions.swift */; };
 		14DB26141E96FF5000FA5116 /* GMUGridBasedClusterAlgorithm.m in Sources */ = {isa = PBXBuildFile; fileRef = 14DB25D91E96FF5000FA5116 /* GMUGridBasedClusterAlgorithm.m */; };
 		14DB26151E96FF5000FA5116 /* GMUNonHierarchicalDistanceBasedAlgorithm.m in Sources */ = {isa = PBXBuildFile; fileRef = 14DB25DB1E96FF5000FA5116 /* GMUNonHierarchicalDistanceBasedAlgorithm.m */; };
 		14DB26161E96FF5000FA5116 /* GMUSimpleClusterAlgorithm.m in Sources */ = {isa = PBXBuildFile; fileRef = 14DB25DD1E96FF5000FA5116 /* GMUSimpleClusterAlgorithm.m */; };
@@ -63,6 +64,7 @@
 		14B8C66A1E81ECE600834712 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		14BD65121E83EE070026E4B7 /* MainCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainCollectionViewController.swift; path = Historic/View/MainCollectionViewController.swift; sourceTree = SOURCE_ROOT; };
 		14BD65151E83F1DE0026E4B7 /* LocationCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationCollectionViewCell.swift; sourceTree = "<group>"; };
+		14D74CCC1EB95F99009E3B62 /* extentions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = extentions.swift; sourceTree = "<group>"; };
 		14DB25D71E96FF5000FA5116 /* GMUClusterAlgorithm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMUClusterAlgorithm.h; sourceTree = "<group>"; };
 		14DB25D81E96FF5000FA5116 /* GMUGridBasedClusterAlgorithm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMUGridBasedClusterAlgorithm.h; sourceTree = "<group>"; };
 		14DB25D91E96FF5000FA5116 /* GMUGridBasedClusterAlgorithm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMUGridBasedClusterAlgorithm.m; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 				14DB26291E96FFAF00FA5116 /* BridgingHeader.h */,
 				14DB25D31E96FEB300FA5116 /* Google-Maps-iOS-Utils */,
 				145C43D21E89168F002956F7 /* mapstyle.json */,
+				14D74CCC1EB95F99009E3B62 /* extentions.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -550,6 +553,7 @@
 				14DB261F1E96FF5000FA5116 /* GMUFeature.m in Sources */,
 				14DB26281E96FF5000FA5116 /* GQTPointQuadTreeChild.m in Sources */,
 				14DB26181E96FF5000FA5116 /* GMUClusterManager.m in Sources */,
+				14D74CCD1EB95F99009E3B62 /* extentions.swift in Sources */,
 				14DB261A1E96FF5000FA5116 /* GMUDefaultClusterIconGenerator.m in Sources */,
 				14DB26221E96FF5000FA5116 /* GMULineString.m in Sources */,
 				14931C2A1E96FAEE00F4DDBF /* Place.swift in Sources */,

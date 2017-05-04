@@ -11,15 +11,37 @@ import GoogleMaps
 import SwiftSpinner
 import SwiftyJSON
 import RealmSwift
+import DropDown
 
 
 class MapViewController: UIViewController, GMSMapViewDelegate, GMUClusterManagerDelegate {
     @IBOutlet weak var mapView: GMSMapView!
     private var clusterManager: GMUClusterManager!
+    private var searchBar: UISearchBar!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let navBarSize = self.navigationController?.navigationBar.frame.size
+        searchBar = UISearchBar(frame: CGRect(origin: .zero, size: CGSize(width: (navBarSize?.width)! - 100, height: (navBarSize?.height)! - 10)))
+        let searchBarItem = UIBarButtonItem(customView: searchBar)
+        searchBar.placeholder = "Поиск"
+        searchBar.barTintColor = UIColor.appColor().withAlphaComponent(0.5)
+        self.navigationItem.leftBarButtonItem = searchBarItem;
+        
+        let textField = searchBar.value(forKey: "searchField") as? UITextField
+        textField?.backgroundColor = UIColor.appColor().withAlphaComponent(0.5)
+        textField?.textColor = .white
+        
+        let attributeDict = [NSForegroundColorAttributeName: UIColor.white]
+        textField!.attributedPlaceholder = NSAttributedString(string: "Поиск", attributes: attributeDict)
+        searchBar.setImage(UIImage(named: "search-ico"), for: .search, state: .normal)
+        searchBar.setImage(UIImage(named: "search-cancel"), for: .clear, state: .normal)
         loadPlaces()
+        
+        self.addToolBar(textField: textField!)
+//        let dropDown = DropDown(anchorView: navigationItem.leftBarButtonItem!)
+//        dropDown.dataSource = ["Car", "Motorcycle", "Truck"]
     }
 
     override func didReceiveMemoryWarning() {
@@ -28,7 +50,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate, GMUClusterManager
     }
     
     func loadPlaces() {
-        if (true) {
+        if (false) {
             initMap()
             return
         }
@@ -149,5 +171,8 @@ class MapViewController: UIViewController, GMSMapViewDelegate, GMUClusterManager
             controller.placeId = Int((sender as! GMUClusterItem).placeId)
         }
     }
-
+    
+    override func donePressed() {
+        searchBar.resignFirstResponder()
+    }
 }
