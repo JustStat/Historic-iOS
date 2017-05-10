@@ -270,7 +270,7 @@
                 <navigationController storyboardIdentifier="MapNav" automaticallyAdjustsScrollViewInsets="NO" modalTransitionStyle="flipHorizontal" hidesBarsOnSwipe="YES" id="PHO-f4-Ehu" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Карта" image="MapNav" selectedImage="MapNavFilled" id="mPL-WF-Dmf"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="GK0-df-Fpx">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="GK0-df-Fpx">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -298,7 +298,7 @@
                 <navigationController storyboardIdentifier="ListNav" automaticallyAdjustsScrollViewInsets="NO" modalTransitionStyle="flipHorizontal" id="JNw-f4-ThC" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Список" image="ListNav" selectedImage="ListNavFilled" id="t6v-ZJ-gZR"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="2M6-Ug-AcJ">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="2M6-Ug-AcJ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -320,6 +320,7 @@
         <scene sceneID="gOg-hb-drv">
             <objects>
                 <tabBarController id="bv6-be-JkU" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="Eeh-MP-Uwx"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="sPZ-B0-fSd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>

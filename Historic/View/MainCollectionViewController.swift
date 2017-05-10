@@ -8,16 +8,13 @@
 
 import UIKit
 import AnimatedCollectionViewLayout
-import SwiftyJSON
 import SwiftSpinner
-import RealmSwift
 
 private let reuseIdentifier = "locationCell"
 
 class MainCollectionViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
-    var placesList: Array<Place> = []
-    
+    let placeViewModel = PlaceViewModel()
     
     @IBOutlet weak var collectionView: UICollectionView!
     var direction: UICollectionViewScrollDirection = .horizontal
@@ -31,17 +28,14 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             layout.animator = LinearCardAttributesAnimator()
         }
         self.collectionView.backgroundColor = UIColor(patternImage: UIImage(named: "collectionBackground")!)
+        
         getPlaces()
     }
     
     func getPlaces() {
-        let realm = try! Realm()
-        let places = realm.objects(Place.self)
-        for place in places {
-            print(place)
-            self.placesList.append(place)
+        placeViewModel.getPlaces(filter: "") { () in
+            self.collectionView.reloadData()
         }
-        self.collectionView.reloadData()
     }
     
     override func didReceiveMemoryWarning() {
@@ -54,15 +48,14 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print(placesList.count)
-        return placesList.count
+        return placeViewModel.places.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: LocationCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! LocationCollectionViewCell
-        print(placesList[indexPath.row])
-        cell.locationImage.sd_setImage(with: URL(string: placesList[indexPath.row].image.original!), placeholderImage: UIImage(named: "DefaultImage"))
-        cell.locationNameLabel.text = placesList[indexPath.row].name
+        print(placeViewModel.places[indexPath.row])
+        cell.locationImage.sd_setImage(with: URL(string: placeViewModel.places[indexPath.row].image.original!), placeholderImage: UIImage(named: "DefaultImage"))
+        cell.locationNameLabel.text = placeViewModel.places[indexPath.row].name
         cell.clipsToBounds = true
         return cell
     }
@@ -87,7 +80,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDetail" {
             let controller = segue.destination as! LocationDetailViewController
-            controller.placeId = placesList[(self.collectionView.indexPath(for: sender as! UICollectionViewCell))!.row].placeId
+            controller.placeId = placeViewModel.places[(self.collectionView.indexPath(for: sender as! UICollectionViewCell))!.row].placeId
         }
     }
     

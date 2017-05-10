@@ -43,6 +43,7 @@
 		14DB26261E96FF5000FA5116 /* GMUStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 14DB260B1E96FF5000FA5116 /* GMUStyle.m */; };
 		14DB26271E96FF5000FA5116 /* GQTPointQuadTree.m in Sources */ = {isa = PBXBuildFile; fileRef = 14DB26101E96FF5000FA5116 /* GQTPointQuadTree.m */; };
 		14DB26281E96FF5000FA5116 /* GQTPointQuadTreeChild.m in Sources */ = {isa = PBXBuildFile; fileRef = 14DB26121E96FF5000FA5116 /* GQTPointQuadTreeChild.m */; };
+		14FE92A31EBCCC2C0032D0BF /* PlaceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14FE92A21EBCCC2C0032D0BF /* PlaceViewModel.swift */; };
 		58A2E09E27D928CAD9002C7C /* Pods_Historic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D60EE7B34C93A329C25AECF /* Pods_Historic.framework */; };
 /* End PBXBuildFile section */
 
@@ -123,6 +124,7 @@
 		14DB26121E96FF5000FA5116 /* GQTPointQuadTreeChild.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GQTPointQuadTreeChild.m; sourceTree = "<group>"; };
 		14DB26131E96FF5000FA5116 /* GQTPointQuadTreeItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GQTPointQuadTreeItem.h; sourceTree = "<group>"; };
 		14DB26291E96FFAF00FA5116 /* BridgingHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BridgingHeader.h; sourceTree = "<group>"; };
+		14FE92A21EBCCC2C0032D0BF /* PlaceViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceViewModel.swift; sourceTree = "<group>"; };
 		1D60EE7B34C93A329C25AECF /* Pods_Historic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Historic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A5F3F750D77F9487A5B3389 /* Pods-Historic.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Historic.release.xcconfig"; path = "Pods/Target Support Files/Pods-Historic/Pods-Historic.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -231,9 +233,10 @@
 		14B8C6551E81EA8900834712 /* Historic */ = {
 			isa = PBXGroup;
 			children = (
+				14FE92A11EBCCC000032D0BF /* VIewModel */,
 				14931C271E96FAB000F4DDBF /* Model */,
-				145C43D11E891668002956F7 /* Helpers */,
 				14BD65111E83EDF50026E4B7 /* View */,
+				145C43D11E891668002956F7 /* Helpers */,
 				14B8C6561E81EA8900834712 /* AppDelegate.swift */,
 				14B8C65A1E81EA8900834712 /* Main.storyboard */,
 				14B8C65D1E81EA8900834712 /* Assets.xcassets */,
@@ -381,6 +384,14 @@
 				14DB26131E96FF5000FA5116 /* GQTPointQuadTreeItem.h */,
 			);
 			path = QuadTree;
+			sourceTree = "<group>";
+		};
+		14FE92A11EBCCC000032D0BF /* VIewModel */ = {
+			isa = PBXGroup;
+			children = (
+				14FE92A21EBCCC2C0032D0BF /* PlaceViewModel.swift */,
+			);
+			path = VIewModel;
 			sourceTree = "<group>";
 		};
 		2613377DDDB531B2F96D7697 /* Frameworks */ = {
@@ -550,6 +561,7 @@
 				14DB261B1E96FF5000FA5116 /* GMUDefaultClusterRenderer.m in Sources */,
 				145C43D61E891770002956F7 /* MapViewController.swift in Sources */,
 				14DB26241E96FF5000FA5116 /* GMUPoint.m in Sources */,
+				14FE92A31EBCCC2C0032D0BF /* PlaceViewModel.swift in Sources */,
 				14DB261F1E96FF5000FA5116 /* GMUFeature.m in Sources */,
 				14DB26281E96FF5000FA5116 /* GQTPointQuadTreeChild.m in Sources */,
 				14DB26181E96FF5000FA5116 /* GMUClusterManager.m in Sources */,
