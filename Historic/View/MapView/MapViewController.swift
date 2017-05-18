@@ -9,10 +9,10 @@
 import UIKit
 import GoogleMaps
 import SwiftSpinner
-import DropDown
 
 
-class MapViewController: UIViewController, GMSMapViewDelegate, GMUClusterManagerDelegate {
+
+class MapViewController: UIViewController, GMSMapViewDelegate, GMUClusterManagerDelegate, UITabBarControllerDelegate {
     @IBOutlet weak var mapView: GMSMapView!
     private var clusterManager: GMUClusterManager!
     private var searchBar: UISearchBar!
@@ -21,13 +21,17 @@ class MapViewController: UIViewController, GMSMapViewDelegate, GMUClusterManager
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.tabBarController?.delegate = self
+        
         searchBar = self.addSearchBar()
         initMap()
         updateCamera()
-        updateMarkers()
-
-//        let dropDown = DropDown(anchorView: navigationItem.leftBarButtonItem!)
-//        dropDown.dataSource = ["Car", "Motorcycle", "Truck"]
+        getMarkers()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        updateMap()
+        searchBar.text = self.placeViewModel.query
     }
 
     override func didReceiveMemoryWarning() {
@@ -48,6 +52,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate, GMUClusterManager
         } catch {
             NSLog("One or more of the map styles failed to load. \(error)")
         }
+        mapView.isMyLocationEnabled = true
         
         initClasterization()
 
@@ -59,17 +64,21 @@ class MapViewController: UIViewController, GMSMapViewDelegate, GMUClusterManager
         mapView.camera = camera
     }
     
-    func updateMarkers() {
+    func getMarkers() {
         SwiftSpinner.show("Загрузка данных", animated: true)
-        placeViewModel.getPlaces(filter: self.searchBar.text!) { () in
-            self.clusterManager.clearItems()
-            for place in self.placeViewModel.places {
-                print(place)
-                self.clusterManager.add(place)
-            }
-            self.clusterManager.cluster()
+        placeViewModel.getPlaces() { () in
+            self.updateMap()
             SwiftSpinner.hide()
         }
+    }
+    
+    func updateMap() {
+        self.clusterManager.clearItems()
+        for place in self.placeViewModel.places {
+            print(place)
+            self.clusterManager.add(place)
+        }
+        self.clusterManager.cluster()
     }
     
     func initClasterization() {
@@ -111,10 +120,23 @@ class MapViewController: UIViewController, GMSMapViewDelegate, GMUClusterManager
     }
     
     override func cancelPressed() {
-        updateMarkers()
+        getMarkers()
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        updateMarkers()
+        getMarkers()
+    }
+    
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        if tabBarController.selectedIndex == 1 {
+            let vc = (viewController as! UINavigationController).viewControllers[0] as!MainCollectionViewController
+            if vc.placeViewModel == nil {
+                vc.placeViewModel = self.placeViewModel
+            }
+        }
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        self.placeViewModel.query = searchText
     }
 }

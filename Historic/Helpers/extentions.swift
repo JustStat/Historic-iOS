@@ -28,7 +28,7 @@ extension UIViewController: UITextFieldDelegate {
 extension UIViewController: UISearchBarDelegate {
     func addSearchBar() -> UISearchBar {
         let navBarSize = self.navigationController?.navigationBar.frame.size
-        let searchBar = UISearchBar(frame: CGRect(origin: .zero, size: CGSize(width: (navBarSize?.width)! - 100, height: (navBarSize?.height)! - 10)))
+        let searchBar = UISearchBar(frame: CGRect(origin: .zero, size: CGSize(width: (navBarSize?.width)! - 50, height: (navBarSize?.height)! - 10)))
         let searchBarItem = UIBarButtonItem(customView: searchBar)
         searchBar.placeholder = "Поиск"
         searchBar.barTintColor = UIColor.appColor().withAlphaComponent(0.5)

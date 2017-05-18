@@ -9,11 +9,19 @@
 import RealmSwift
 import SwiftyJSON
 
+enum FilterState: Int {
+    case Alphabetic
+    case Near
+}
+
 class PlaceViewModel: NSObject {
-    var places: Results<Place>!
+    var places = [Place]()
     let realm = try! Realm()
+    var query = ""
+    var filter = FilterState.Alphabetic
+    var location = CLLocation(latitude: 0, longitude: 0)
     
-    func loadPlacesFromServer(filter: String, completion: @escaping ((Void) -> Void)) {
+    func loadPlacesFromServer(completion: @escaping ((Void) -> Void)) {
         let config = URLSessionConfiguration.default
         let session = URLSession(configuration: config)
         let url = URL(string: "http://62.109.7.158/api/places/")!
@@ -48,7 +56,8 @@ class PlaceViewModel: NSObject {
                             self.realm.add(place)
                         }
                     }
-                    self.getPlacesFormCache(filter: filter, completion: completion)
+                    UserDefaults.standard.set(false, forKey: "NeedUpdate")
+                    self.getPlacesFormCache(completion: completion)
                 }
             }
             
@@ -56,26 +65,39 @@ class PlaceViewModel: NSObject {
         task.resume()
     }
     
-    func getPlacesFormCache(filter: String, completion: @escaping ((Void) -> Void)) {
-        if filter == "" {
-            places = realm.objects(Place.self)
+    func getPlacesFormCache(completion: @escaping ((Void) -> Void)) {
+        if query == "" {
+            places = Array<Place>(realm.objects(Place.self))
         } else {
-            places = realm.objects(Place.self).filter(NSPredicate(format: "name CONTAINS %@", filter))
+            places = Array<Place>(realm.objects(Place.self).filter(NSPredicate(format: "name CONTAINS %@", query)))
+        }
+        switch self.filter {
+        case .Alphabetic:
+            places = places.sorted(by: { (first, second) -> Bool in
+                return first.name < second.name
+            })
+            break
+        case .Near:
+            print(location)
+            places = places.sorted(by: { (first, second) -> Bool in
+                let firstPos = location.distance(from: CLLocation(latitude: first.lat, longitude: first.lon))
+                print(firstPos)
+                let secondPos = location.distance(from: CLLocation(latitude: second.lat, longitude: second.lon))
+                print(secondPos)
+                return firstPos > secondPos
+            })
+            break
         }
         DispatchQueue.main.async {
             completion()
         }
     }
     
-    func needUpdate() -> Bool {
-        return false
-    }
-    
-    func getPlaces(filter: String, completionHandler: @escaping ((Void) -> Void)) {
-        if needUpdate() {
-            loadPlacesFromServer(filter: filter, completion: completionHandler)
+    func getPlaces(completionHandler: @escaping ((Void) -> Void)) {
+        if UserDefaults.standard.bool(forKey: "NeedUpdate") {
+            loadPlacesFromServer(completion: completionHandler)
         } else {
-            getPlacesFormCache(filter: filter, completion: completionHandler)
+            getPlacesFormCache(completion: completionHandler)
         }
     }
 

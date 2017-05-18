@@ -98,7 +98,11 @@
                     </view>
                     <navigationItem key="navigationItem" id="cr7-ih-W4v">
                         <barButtonItem key="backBarButtonItem" title="Назад" id="4Ei-1U-a21"/>
-                        <barButtonItem key="rightBarButtonItem" title="Item" id="xRA-s4-WdT"/>
+                        <barButtonItem key="rightBarButtonItem" image="sortIcon" id="xRA-s4-WdT">
+                            <connections>
+                                <action selector="filterButtonTap:" destination="tlu-nS-Jwo" id="VWK-vi-HUF"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <connections>
@@ -136,7 +140,6 @@
                     </view>
                     <navigationItem key="navigationItem" id="WMf-O8-RcZ">
                         <barButtonItem key="backBarButtonItem" title="Назад" id="hVh-Iq-erh"/>
-                        <barButtonItem key="rightBarButtonItem" image="sortIcon" id="2DV-4T-4F8"/>
                     </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="ELk-xh-fNb" id="OCG-rL-pJr"/>
@@ -270,7 +273,7 @@
                 <navigationController storyboardIdentifier="MapNav" automaticallyAdjustsScrollViewInsets="NO" modalTransitionStyle="flipHorizontal" hidesBarsOnSwipe="YES" id="PHO-f4-Ehu" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Карта" image="MapNav" selectedImage="MapNavFilled" id="mPL-WF-Dmf"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="GK0-df-Fpx">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="GK0-df-Fpx">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -298,7 +301,7 @@
                 <navigationController storyboardIdentifier="ListNav" automaticallyAdjustsScrollViewInsets="NO" modalTransitionStyle="flipHorizontal" id="JNw-f4-ThC" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Список" image="ListNav" selectedImage="ListNavFilled" id="t6v-ZJ-gZR"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="2M6-Ug-AcJ">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="2M6-Ug-AcJ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -348,6 +351,6 @@
         <image name="sortIcon" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Vy6-bK-m92"/>
+        <segue reference="GOH-2t-Jje"/>
     </inferredMetricsTieBreakers>
 </document>

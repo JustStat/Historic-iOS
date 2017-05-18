@@ -9,12 +9,17 @@
 import UIKit
 import AnimatedCollectionViewLayout
 import SwiftSpinner
+import DropDown
 
 private let reuseIdentifier = "locationCell"
 
-class MainCollectionViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+class MainCollectionViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, CLLocationManagerDelegate {
     
-    let placeViewModel = PlaceViewModel()
+    var placeViewModel: PlaceViewModel!
+    private var searchBar: UISearchBar!
+    var dropDown: DropDown!
+    var locationViewModel: LocationViewModel!
+    
     
     @IBOutlet weak var collectionView: UICollectionView!
     var direction: UICollectionViewScrollDirection = .horizontal
@@ -22,6 +27,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView?.isPagingEnabled = true
+        locationViewModel = LocationViewModel(delegate: self)
         
         if let layout = collectionView?.collectionViewLayout as? AnimatedCollectionViewLayout {
             layout.scrollDirection = direction
@@ -29,11 +35,34 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         }
         self.collectionView.backgroundColor = UIColor(patternImage: UIImage(named: "collectionBackground")!)
         
-        getPlaces()
+        searchBar = self.addSearchBar()
+        
+        dropDown = DropDown(anchorView: navigationItem.rightBarButtonItem!)
+        dropDown.dataSource = ["По алфавиту", "По дальности"]
+        dropDown.dismissMode = .onTap
+        dropDown.direction = .any
+        dropDown.selectionAction = {(Index, String) in
+            self.placeViewModel.filter = FilterState(rawValue: Index)!
+            self.placeViewModel.location = self.locationViewModel.getLocation()
+            self.getPlaces()
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        searchBar.text = self.placeViewModel.query
+        self.collectionView.reloadData()
     }
     
     func getPlaces() {
-        placeViewModel.getPlaces(filter: "") { () in
+        placeViewModel.getPlaces() { () in
+//            if self.placeViewModel.places.count == 0 {
+//                let alert = UIAlertController(title: "Ошибка", message: "Не удалось загрузить список достопримечательностей", preferredStyle: .alert)
+//                alert.addAction(UIAlertAction(title: "Повторить", style: .default, handler: { (UIAlertAction) in
+//                    self.getPlaces()
+//                }))
+//                self.present(alert, animated: true, completion: nil)
+//                return
+//            }
             self.collectionView.reloadData()
         }
     }
@@ -53,7 +82,6 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: LocationCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! LocationCollectionViewCell
-        print(placeViewModel.places[indexPath.row])
         cell.locationImage.sd_setImage(with: URL(string: placeViewModel.places[indexPath.row].image.original!), placeholderImage: UIImage(named: "DefaultImage"))
         cell.locationNameLabel.text = placeViewModel.places[indexPath.row].name
         cell.clipsToBounds = true
@@ -84,4 +112,28 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         }
     }
     
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        self.placeViewModel.query = searchText
+    }
+    
+    override func donePressed() {
+        searchBar.resignFirstResponder()
+    }
+    
+    override func cancelPressed() {
+        getPlaces()
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        getPlaces()
+    }
+    
+    @IBAction func filterButtonTap(_ sender: Any) {
+        dropDown.show()
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        self.placeViewModel.location = locations[0]
+        getPlaces()
+    }
 }

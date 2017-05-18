@@ -25,8 +25,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         SwiftSpinner.appearance().backgroundColor = UIColor.appColor()
         
         GMSServices.provideAPIKey("AIzaSyCCCOozQXE18Dg3X_z4b5ZkkLeQpXvF7Ks")
-        
         DropDown.startListeningToKeyboard()
+        
+        UserDefaults.standard.set(true, forKey: "NeedUpdate")
         return true
     }
 
