@@ -61,6 +61,9 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             alert.addAction(UIAlertAction(title: "Повторить", style: .default, handler: { (action) in
                 self.getPlaces()
             }))
+            if self.placeViewModel.query != "" {
+                alert.addAction(UIAlertAction(title: "Отмена", style: .cancel, handler: nil))
+            }
             self.present(alert, animated: true, completion: nil)
         })
     }

@@ -53,6 +53,7 @@ class LocationDetailViewController: UIViewController, UICollectionViewDelegate, 
         self.mainImageView.sd_setImage(with: URL(string: place.image.original!), placeholderImage: UIImage(named: "DefaultImage"))
         self.descriptionTextView.text = place.desc
         self.imagesCollectionView.reloadData()
+        self.navigationItem.title = place.name
         
         let camera = GMSCameraPosition.camera(withLatitude: place.lat,
                                               longitude: place.lon, zoom: 12)

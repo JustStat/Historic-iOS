@@ -74,6 +74,9 @@ class MapViewController: UIViewController, GMSMapViewDelegate, GMUClusterManager
             alert.addAction(UIAlertAction(title: "Повторить", style: .default, handler: { (action) in
                 self.getMarkers()
             }))
+            if self.placeViewModel.query != "" {
+                alert.addAction(UIAlertAction(title: "Отмена", style: .cancel, handler: nil))
+            }
             SwiftSpinner.hide()
             self.present(alert, animated: true, completion: nil)
         })
