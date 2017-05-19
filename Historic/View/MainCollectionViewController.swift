@@ -54,17 +54,15 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
     }
     
     func getPlaces() {
-        placeViewModel.getPlaces() { () in
-//            if self.placeViewModel.places.count == 0 {
-//                let alert = UIAlertController(title: "Ошибка", message: "Не удалось загрузить список достопримечательностей", preferredStyle: .alert)
-//                alert.addAction(UIAlertAction(title: "Повторить", style: .default, handler: { (UIAlertAction) in
-//                    self.getPlaces()
-//                }))
-//                self.present(alert, animated: true, completion: nil)
-//                return
-//            }
+        placeViewModel.getPlaces(completionHandler: { () in
             self.collectionView.reloadData()
-        }
+        }, error: { () in
+            let alert = UIAlertController(title: "Ошибка", message: "Не удалось загрузить данные", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Повторить", style: .default, handler: { (action) in
+                self.getPlaces()
+            }))
+            self.present(alert, animated: true, completion: nil)
+        })
     }
     
     override func didReceiveMemoryWarning() {

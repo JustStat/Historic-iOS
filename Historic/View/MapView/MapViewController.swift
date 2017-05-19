@@ -66,10 +66,17 @@ class MapViewController: UIViewController, GMSMapViewDelegate, GMUClusterManager
     
     func getMarkers() {
         SwiftSpinner.show("Загрузка данных", animated: true)
-        placeViewModel.getPlaces() { () in
+        placeViewModel.getPlaces(completionHandler: { () in
             self.updateMap()
             SwiftSpinner.hide()
-        }
+        }, error: { () in
+            let alert = UIAlertController(title: "Ошибка", message: "Не удалось загрузить данные", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Повторить", style: .default, handler: { (action) in
+                self.getMarkers()
+            }))
+            SwiftSpinner.hide()
+            self.present(alert, animated: true, completion: nil)
+        })
     }
     
     func updateMap() {

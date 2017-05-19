@@ -21,7 +21,7 @@ class PlaceViewModel: NSObject {
     var filter = FilterState.Alphabetic
     var location = CLLocation(latitude: 0, longitude: 0)
     
-    func loadPlacesFromServer(completion: @escaping ((Void) -> Void)) {
+    func loadPlacesFromServer(completion: @escaping ((Void) -> Void), errorHandler: @escaping ((Void) -> Void)) {
         let config = URLSessionConfiguration.default
         let session = URLSession(configuration: config)
         let url = URL(string: "http://62.109.7.158/api/places/")!
@@ -29,6 +29,9 @@ class PlaceViewModel: NSObject {
             (data, response, error) in
             if error != nil {
                 print(error!.localizedDescription)
+                DispatchQueue.main.async {
+                    self.getPlacesFormCache(completion: completion, errorHandler: errorHandler)
+                }
             } else {
                 let json = JSON(data: data!)
                 var places: Array<Place> = []
@@ -57,7 +60,7 @@ class PlaceViewModel: NSObject {
                         }
                     }
                     UserDefaults.standard.set(false, forKey: "NeedUpdate")
-                    self.getPlacesFormCache(completion: completion)
+                    self.getPlacesFormCache(completion: completion, errorHandler: errorHandler)
                 }
             }
             
@@ -65,7 +68,7 @@ class PlaceViewModel: NSObject {
         task.resume()
     }
     
-    func getPlacesFormCache(completion: @escaping ((Void) -> Void)) {
+    func getPlacesFormCache(completion: @escaping ((Void) -> Void), errorHandler: @escaping ((Void) -> Void)) {
         if query == "" {
             places = Array<Place>(realm.objects(Place.self))
         } else {
@@ -89,15 +92,19 @@ class PlaceViewModel: NSObject {
             break
         }
         DispatchQueue.main.async {
-            completion()
+            if self.places.count == 0 {
+                errorHandler()
+            } else {
+                completion()
+            }
         }
     }
     
-    func getPlaces(completionHandler: @escaping ((Void) -> Void)) {
+    func getPlaces(completionHandler: @escaping ((Void) -> Void), error: @escaping (Void) -> Void) {
         if UserDefaults.standard.bool(forKey: "NeedUpdate") {
-            loadPlacesFromServer(completion: completionHandler)
+            loadPlacesFromServer(completion: completionHandler, errorHandler: error)
         } else {
-            getPlacesFormCache(completion: completionHandler)
+            getPlacesFormCache(completion: completionHandler, errorHandler: error)
         }
     }
 
