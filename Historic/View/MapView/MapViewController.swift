@@ -23,7 +23,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate, GMUClusterManager
         
         self.tabBarController?.delegate = self
         
-        searchBar = self.addSearchBar()
+        searchBar = self.addSearchBar(offset: 30)
         initMap()
         updateCamera()
         getMarkers()
@@ -120,11 +120,14 @@ class MapViewController: UIViewController, GMSMapViewDelegate, GMUClusterManager
     }
     
     override func cancelPressed() {
+        placeViewModel.query = ""
         getMarkers()
+        searchBar.resignFirstResponder()
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         getMarkers()
+        searchBar.resignFirstResponder()
     }
     
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {

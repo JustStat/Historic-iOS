@@ -41,7 +41,12 @@ class Place: Object, GMUClusterItem {
             latitude: lat,
             longitude: lon)
     }
-    dynamic var name: String = ""
+    dynamic var sName: String = ""
+    dynamic var name: String = "" {
+        didSet {
+            sName = name.lowercased()
+        }
+    }
     dynamic var image: PlaceImage!
     dynamic var desc: String = ""
     var images = List<PlaceImage>()
@@ -58,7 +63,7 @@ class Place: Object, GMUClusterItem {
     {
         self.init()
         self.placeId = id
-        self.name = name
+        ({self.name = name})()
         self.image = image
         self.desc = desc
         self.images = images

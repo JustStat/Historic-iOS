@@ -35,7 +35,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         }
         self.collectionView.backgroundColor = UIColor(patternImage: UIImage(named: "collectionBackground")!)
         
-        searchBar = self.addSearchBar()
+        searchBar = self.addSearchBar(offset: 70)
         
         dropDown = DropDown(anchorView: navigationItem.rightBarButtonItem!)
         dropDown.dataSource = ["По алфавиту", "По дальности"]
@@ -121,11 +121,14 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
     }
     
     override func cancelPressed() {
+        placeViewModel.query = ""
         getPlaces()
+        searchBar.resignFirstResponder()
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         getPlaces()
+        searchBar.resignFirstResponder()
     }
     
     @IBAction func filterButtonTap(_ sender: Any) {

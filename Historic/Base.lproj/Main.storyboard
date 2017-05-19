@@ -70,7 +70,7 @@
                                                 </visualEffectView>
                                             </subviews>
                                         </view>
-                                        <color key="backgroundColor" red="0.1118204288" green="1" blue="0.14280859600000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstItem="4AH-1L-oKR" firstAttribute="leading" secondItem="Eme-Fz-BGi" secondAttribute="leading" id="1n5-Mf-Z6g"/>
                                             <constraint firstAttribute="bottomMargin" secondItem="4AH-1L-oKR" secondAttribute="bottom" constant="-8" id="51m-RZ-3cu"/>

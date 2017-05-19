@@ -69,7 +69,7 @@ class PlaceViewModel: NSObject {
         if query == "" {
             places = Array<Place>(realm.objects(Place.self))
         } else {
-            places = Array<Place>(realm.objects(Place.self).filter(NSPredicate(format: "name CONTAINS %@", query)))
+            places = Array<Place>(realm.objects(Place.self).filter(NSPredicate(format: "sName CONTAINS %@", query.lowercased())))
         }
         switch self.filter {
         case .Alphabetic:

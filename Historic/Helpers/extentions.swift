@@ -11,9 +11,9 @@ extension UIViewController: UITextFieldDelegate {
         let toolBar = UIToolbar()
         toolBar.barStyle = .default
         toolBar.isTranslucent = true
-        toolBar.tintColor = UIColor(red: 76 / 255, green: 217 / 255, blue: 100 / 255, alpha: 1)
-        let doneButton = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(donePressed))
-        let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelPressed))
+        toolBar.tintColor = UIColor.appColor()
+        let doneButton = UIBarButtonItem(title: "Готово", style: .done, target: self, action: #selector(donePressed))
+        let cancelButton = UIBarButtonItem(title: "Отмена", style: .plain, target: self, action: #selector(cancelPressed))
         let spaceButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         toolBar.setItems([cancelButton, spaceButton, doneButton], animated: false)
         toolBar.isUserInteractionEnabled = true
@@ -26,9 +26,9 @@ extension UIViewController: UITextFieldDelegate {
 }
 
 extension UIViewController: UISearchBarDelegate {
-    func addSearchBar() -> UISearchBar {
+    func addSearchBar(offset: CGFloat) -> UISearchBar {
         let navBarSize = self.navigationController?.navigationBar.frame.size
-        let searchBar = UISearchBar(frame: CGRect(origin: .zero, size: CGSize(width: (navBarSize?.width)! - 50, height: (navBarSize?.height)! - 10)))
+        let searchBar = UISearchBar(frame: CGRect(origin: .zero, size: CGSize(width: (navBarSize?.width)! - offset, height: (navBarSize?.height)! - 10)))
         let searchBarItem = UIBarButtonItem(customView: searchBar)
         searchBar.placeholder = "Поиск"
         searchBar.barTintColor = UIColor.appColor().withAlphaComponent(0.5)
