@@ -69,6 +69,7 @@ class PlaceViewModel: NSObject {
     }
     
     func getPlacesFormCache(completion: @escaping ((Void) -> Void), errorHandler: @escaping ((Void) -> Void)) {
+        print("My location is: \(location)")
         if query == "" {
             places = Array<Place>(realm.objects(Place.self))
         } else {
@@ -81,14 +82,15 @@ class PlaceViewModel: NSObject {
             })
             break
         case .Near:
-            print(location)
             places = places.sorted(by: { (first, second) -> Bool in
                 let firstPos = location.distance(from: CLLocation(latitude: first.lat, longitude: first.lon))
-                print(firstPos)
                 let secondPos = location.distance(from: CLLocation(latitude: second.lat, longitude: second.lon))
-                print(secondPos)
-                return firstPos > secondPos
+                return firstPos < secondPos
             })
+            for var place: Place in places {
+                CLLocation(latitude: place.lat, longitude: place.lon).distance(from: location)
+                print("\(place.name) Расстояние: \(CLLocation(latitude: place.lat, longitude: place.lon).distance(from: location))")
+            }
             break
         }
         DispatchQueue.main.async {

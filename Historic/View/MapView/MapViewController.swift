@@ -142,7 +142,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate, GMUClusterManager
     
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         if tabBarController.selectedIndex == 1 {
-            let vc = (viewController as! UINavigationController).viewControllers[0] as!MainCollectionViewController
+            let vc = (viewController as! UINavigationController).viewControllers[0] as!MainTableViewTableViewController
             if vc.placeViewModel == nil {
                 vc.placeViewModel = self.placeViewModel
             }

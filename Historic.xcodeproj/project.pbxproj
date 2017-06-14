@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		142666731EEFC825003D8EDF /* MainTableViewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142666721EEFC825003D8EDF /* MainTableViewTableViewController.swift */; };
+		142666761EEFCF1C003D8EDF /* PlaceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142666751EEFCF1C003D8EDF /* PlaceTableViewCell.swift */; };
 		145C43C91E848587002956F7 /* LocationDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145C43C81E848587002956F7 /* LocationDetailViewController.swift */; };
 		145C43CD1E849593002956F7 /* GalleryCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145C43CC1E849593002956F7 /* GalleryCollectionView.swift */; };
 		145C43D01E8499B4002956F7 /* GalleryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145C43CF1E8499B4002956F7 /* GalleryCollectionViewCell.swift */; };
@@ -20,8 +22,6 @@
 		14B8C65E1E81EA8900834712 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 14B8C65D1E81EA8900834712 /* Assets.xcassets */; };
 		14B8C6611E81EA8900834712 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 14B8C65F1E81EA8900834712 /* LaunchScreen.storyboard */; };
 		14B8C66B1E81ECE600834712 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B8C66A1E81ECE600834712 /* Colors.swift */; };
-		14BD65131E83EE070026E4B7 /* MainCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14BD65121E83EE070026E4B7 /* MainCollectionViewController.swift */; };
-		14BD65161E83F1DE0026E4B7 /* LocationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14BD65151E83F1DE0026E4B7 /* LocationCollectionViewCell.swift */; };
 		14D74CCD1EB95F99009E3B62 /* extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D74CCC1EB95F99009E3B62 /* extentions.swift */; };
 		14DB26141E96FF5000FA5116 /* GMUGridBasedClusterAlgorithm.m in Sources */ = {isa = PBXBuildFile; fileRef = 14DB25D91E96FF5000FA5116 /* GMUGridBasedClusterAlgorithm.m */; };
 		14DB26151E96FF5000FA5116 /* GMUNonHierarchicalDistanceBasedAlgorithm.m in Sources */ = {isa = PBXBuildFile; fileRef = 14DB25DB1E96FF5000FA5116 /* GMUNonHierarchicalDistanceBasedAlgorithm.m */; };
@@ -50,6 +50,8 @@
 
 /* Begin PBXFileReference section */
 		065D07C0E8B4305C8DB80658 /* Pods-Historic.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Historic.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Historic/Pods-Historic.debug.xcconfig"; sourceTree = "<group>"; };
+		142666721EEFC825003D8EDF /* MainTableViewTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTableViewTableViewController.swift; sourceTree = "<group>"; };
+		142666751EEFCF1C003D8EDF /* PlaceTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceTableViewCell.swift; sourceTree = "<group>"; };
 		145C43C81E848587002956F7 /* LocationDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocationDetailViewController.swift; path = Historic/View/LocationDetailViewController.swift; sourceTree = SOURCE_ROOT; };
 		145C43CC1E849593002956F7 /* GalleryCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryCollectionView.swift; sourceTree = "<group>"; };
 		145C43CF1E8499B4002956F7 /* GalleryCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -65,8 +67,6 @@
 		14B8C6601E81EA8900834712 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		14B8C6621E81EA8900834712 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		14B8C66A1E81ECE600834712 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
-		14BD65121E83EE070026E4B7 /* MainCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainCollectionViewController.swift; path = Historic/View/MainCollectionViewController.swift; sourceTree = SOURCE_ROOT; };
-		14BD65151E83F1DE0026E4B7 /* LocationCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationCollectionViewCell.swift; sourceTree = "<group>"; };
 		14D74CCC1EB95F99009E3B62 /* extentions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = extentions.swift; sourceTree = "<group>"; };
 		14DB25D71E96FF5000FA5116 /* GMUClusterAlgorithm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMUClusterAlgorithm.h; sourceTree = "<group>"; };
 		14DB25D81E96FF5000FA5116 /* GMUGridBasedClusterAlgorithm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMUGridBasedClusterAlgorithm.h; sourceTree = "<group>"; };
@@ -143,6 +143,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		142666711EEFC7FC003D8EDF /* MainTableVIew */ = {
+			isa = PBXGroup;
+			children = (
+				142666741EEFCF05003D8EDF /* cell */,
+				142666721EEFC825003D8EDF /* MainTableViewTableViewController.swift */,
+			);
+			path = MainTableVIew;
+			sourceTree = "<group>";
+		};
+		142666741EEFCF05003D8EDF /* cell */ = {
+			isa = PBXGroup;
+			children = (
+				142666751EEFCF1C003D8EDF /* PlaceTableViewCell.swift */,
+			);
+			path = cell;
+			sourceTree = "<group>";
+		};
 		145C43CA1E849528002956F7 /* LocationDetailView */ = {
 			isa = PBXGroup;
 			children = (
@@ -151,15 +168,6 @@
 				145C43C81E848587002956F7 /* LocationDetailViewController.swift */,
 			);
 			path = LocationDetailView;
-			sourceTree = "<group>";
-		};
-		145C43CB1E849541002956F7 /* MainCollectionView */ = {
-			isa = PBXGroup;
-			children = (
-				14BD65141E83F1CA0026E4B7 /* Cells */,
-				14BD65121E83EE070026E4B7 /* MainCollectionViewController.swift */,
-			);
-			path = MainCollectionView;
 			sourceTree = "<group>";
 		};
 		145C43CE1E849999002956F7 /* Cells */ = {
@@ -252,20 +260,11 @@
 		14BD65111E83EDF50026E4B7 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				142666711EEFC7FC003D8EDF /* MainTableVIew */,
 				145C43D41E891757002956F7 /* MapView */,
-				145C43CB1E849541002956F7 /* MainCollectionView */,
 				145C43CA1E849528002956F7 /* LocationDetailView */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		14BD65141E83F1CA0026E4B7 /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-				14BD65151E83F1DE0026E4B7 /* LocationCollectionViewCell.swift */,
-			);
-			name = Cells;
-			path = ../Cells;
 			sourceTree = "<group>";
 		};
 		14DB25D31E96FEB300FA5116 /* Google-Maps-iOS-Utils */ = {
@@ -543,13 +542,12 @@
 				14DB261E1E96FF5000FA5116 /* GMUKMLParser.m in Sources */,
 				14DB26191E96FF5000FA5116 /* GMUStaticCluster.m in Sources */,
 				14B8C66B1E81ECE600834712 /* Colors.swift in Sources */,
-				14BD65131E83EE070026E4B7 /* MainCollectionViewController.swift in Sources */,
 				14DB26251E96FF5000FA5116 /* GMUPolygon.m in Sources */,
-				14BD65161E83F1DE0026E4B7 /* LocationCollectionViewCell.swift in Sources */,
 				14DB26201E96FF5000FA5116 /* GMUGeometryCollection.m in Sources */,
 				14DB261D1E96FF5000FA5116 /* GMUGeometryRenderer.m in Sources */,
 				14DB26211E96FF5000FA5116 /* GMUGroundOverlay.m in Sources */,
 				145C43CD1E849593002956F7 /* GalleryCollectionView.swift in Sources */,
+				142666761EEFCF1C003D8EDF /* PlaceTableViewCell.swift in Sources */,
 				14DB26141E96FF5000FA5116 /* GMUGridBasedClusterAlgorithm.m in Sources */,
 				14DB26261E96FF5000FA5116 /* GMUStyle.m in Sources */,
 				14DB26231E96FF5000FA5116 /* GMUPlacemark.m in Sources */,
@@ -572,6 +570,7 @@
 				14D74CCD1EB95F99009E3B62 /* extentions.swift in Sources */,
 				14DB261A1E96FF5000FA5116 /* GMUDefaultClusterIconGenerator.m in Sources */,
 				14DB26221E96FF5000FA5116 /* GMULineString.m in Sources */,
+				142666731EEFC825003D8EDF /* MainTableViewTableViewController.swift in Sources */,
 				14931C2A1E96FAEE00F4DDBF /* Place.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

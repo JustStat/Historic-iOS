@@ -5,7 +5,6 @@ target 'Historic' do
   use_frameworks!
 
   # Pods for Historic
-  pod 'AnimatedCollectionViewLayout'
   pod 'GoogleMaps'
   pod 'SwiftyJSON'
   pod 'SDWebImage'
@@ -13,6 +12,7 @@ target 'Historic' do
   pod 'RealmSwift'
   pod 'Agrume'
   pod 'DropDown'
+  pod 'FoldingCell'
 end
 
 post_install do |installer|
