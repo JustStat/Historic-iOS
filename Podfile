@@ -13,6 +13,7 @@ target 'Historic' do
   pod 'Agrume'
   pod 'DropDown'
   pod 'FoldingCell'
+  pod 'TagListView'
 end
 
 post_install do |installer|

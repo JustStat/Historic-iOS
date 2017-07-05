@@ -12,13 +12,16 @@ import SwiftyJSON
 import SwiftSpinner
 import RealmSwift
 import Agrume
+import TagListView
 
 class LocationDetailViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
+    @IBOutlet weak var tagListView: TagListView!
     @IBOutlet weak var imagesCollectionView: GalleryCollectionView!
     @IBOutlet weak var descriptionTextView: UITextView!
     @IBOutlet weak var mainImageView: UIImageView!
     @IBOutlet weak var mapView: GMSMapView!
+    @IBOutlet weak var descriptionHeightConstraint: NSLayoutConstraint!
     var placeId: Int = 0
     var place: Place!
 
@@ -55,6 +58,10 @@ class LocationDetailViewController: UIViewController, UICollectionViewDelegate, 
         self.imagesCollectionView.reloadData()
         self.navigationItem.title = place.name
         
+        let fixedWidth = descriptionTextView.frame.size.width
+        descriptionHeightConstraint.constant = descriptionTextView.sizeThatFits(CGSize(width: fixedWidth, height: CGFloat.greatestFiniteMagnitude)).height
+        self.view.updateConstraintsIfNeeded()
+        
         let camera = GMSCameraPosition.camera(withLatitude: place.lat,
                                               longitude: place.lon, zoom: 12)
         self.mapView.isMyLocationEnabled = true
@@ -63,6 +70,18 @@ class LocationDetailViewController: UIViewController, UICollectionViewDelegate, 
         let marker = GMSMarker()
         marker.position = place.position
         marker.map = mapView
+        
+        tagListView.alignment = .center
+        tagListView.textFont = UIFont(name: "AlNile", size: 20)!
+        tagListView.addTag("Нормальный тэг")
+        tagListView.addTag("Очень длинный тэг")
+        tagListView.addTag("Длинный тэг")
+        tagListView.addTag("Нормальный тэг")
+        tagListView.addTag("Очень длинный тэг")
+        tagListView.addTag("Длинный тэг")
+        tagListView.addTag("Нормальный тэг")
+        tagListView.addTag("Очень длинный тэг")
+        tagListView.addTag("Длинный тэг")
     }
     
     // Mark: - CollectionViewDelegateMethods

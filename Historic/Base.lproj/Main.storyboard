@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F67a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="bv6-be-JkU">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G18a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="bv6-be-JkU">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -61,13 +61,13 @@
                         <viewControllerLayoutGuide type="bottom" id="yBp-V4-0gl"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="VTA-sp-zai">
-                        <rect key="frame" x="0.0" y="64" width="375" height="1086"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="1236"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ucX-b1-0uu">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="1037"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="1187"/>
                                 <subviews>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="justified" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uCF-dc-HMD">
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" textAlignment="justified" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uCF-dc-HMD">
                                         <rect key="frame" x="0.0" y="373" width="375" height="372"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
@@ -120,18 +120,66 @@
                                         </constraints>
                                     </imageView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jaw-ei-8dO" customClass="GMSMapView">
-                                        <rect key="frame" x="0.0" y="869" width="375" height="281"/>
+                                        <rect key="frame" x="0.0" y="943" width="375" height="329"/>
                                         <color key="backgroundColor" red="0.18839155499999999" green="1" blue="0.4150103174" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="281" id="rQQ-eq-2Xh"/>
+                                            <constraint firstAttribute="height" constant="329" id="rQQ-eq-2Xh"/>
                                         </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OOh-Gd-wef" customClass="TagListView" customModule="TagListView">
+                                        <rect key="frame" x="0.0" y="893" width="375" height="30"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="textColor">
+                                                <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="selectedTextColor">
+                                                <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="tagBackgroundColor">
+                                                <color key="value" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="tagSelectedBackgroundColor">
+                                                <color key="value" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="selectedBorderColor">
+                                                <color key="value" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="paddingY">
+                                                <real key="value" value="9"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="paddingX">
+                                                <real key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="marginY">
+                                                <real key="value" value="17"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="marginX">
+                                                <real key="value" value="8"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="enableRemoveButton" value="NO"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="removeButtonIconSize">
+                                                <real key="value" value="8"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                     </view>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="fir-Wc-lXd" firstAttribute="width" secondItem="ucX-b1-0uu" secondAttribute="width" id="0JQ-Bf-6pe"/>
+                                    <constraint firstItem="OOh-Gd-wef" firstAttribute="leading" secondItem="ucX-b1-0uu" secondAttribute="leading" id="34Q-35-7nM"/>
+                                    <constraint firstAttribute="trailing" secondItem="OOh-Gd-wef" secondAttribute="trailing" id="5oO-uR-g04"/>
                                     <constraint firstItem="fir-Wc-lXd" firstAttribute="top" secondItem="ucX-b1-0uu" secondAttribute="top" id="8ZE-03-SYq"/>
                                     <constraint firstAttribute="trailing" secondItem="BU7-Ac-63R" secondAttribute="trailing" id="Axu-44-2DG"/>
-                                    <constraint firstItem="Jaw-ei-8dO" firstAttribute="top" secondItem="BU7-Ac-63R" secondAttribute="bottom" constant="-4" id="EFu-se-DIg"/>
+                                    <constraint firstItem="OOh-Gd-wef" firstAttribute="top" secondItem="BU7-Ac-63R" secondAttribute="bottom" constant="20" id="F57-bZ-Myy"/>
                                     <constraint firstItem="fir-Wc-lXd" firstAttribute="leading" secondItem="ucX-b1-0uu" secondAttribute="leading" id="GA6-vJ-Lhj"/>
                                     <constraint firstItem="BU7-Ac-63R" firstAttribute="leading" secondItem="ucX-b1-0uu" secondAttribute="leading" id="JzE-BA-Aae"/>
                                     <constraint firstItem="uCF-dc-HMD" firstAttribute="top" secondItem="fir-Wc-lXd" secondAttribute="bottom" constant="-2" id="KQZ-jX-zEh"/>
@@ -139,6 +187,7 @@
                                     <constraint firstAttribute="trailing" secondItem="Jaw-ei-8dO" secondAttribute="trailing" id="TzS-G7-cmE"/>
                                     <constraint firstItem="uCF-dc-HMD" firstAttribute="leading" secondItem="ucX-b1-0uu" secondAttribute="leadingMargin" constant="-8" id="Unl-b0-TWJ"/>
                                     <constraint firstItem="uCF-dc-HMD" firstAttribute="width" secondItem="ucX-b1-0uu" secondAttribute="width" id="UoP-Wl-TQe"/>
+                                    <constraint firstItem="Jaw-ei-8dO" firstAttribute="top" secondItem="OOh-Gd-wef" secondAttribute="bottom" constant="20" id="WvA-ND-p7d"/>
                                     <constraint firstAttribute="trailing" secondItem="uCF-dc-HMD" secondAttribute="trailing" id="gNz-E6-HQi"/>
                                     <constraint firstAttribute="trailing" secondItem="fir-Wc-lXd" secondAttribute="trailing" id="lbg-GU-eyG"/>
                                     <constraint firstItem="Jaw-ei-8dO" firstAttribute="leading" secondItem="ucX-b1-0uu" secondAttribute="leading" id="rNJ-1c-A2Y"/>
@@ -153,21 +202,22 @@
                             <constraint firstItem="ucX-b1-0uu" firstAttribute="top" secondItem="VTA-sp-zai" secondAttribute="top" id="Z4f-jQ-t7B"/>
                             <constraint firstItem="ucX-b1-0uu" firstAttribute="leading" secondItem="VTA-sp-zai" secondAttribute="leading" id="c4U-OG-0uU"/>
                             <constraint firstItem="ucX-b1-0uu" firstAttribute="centerX" secondItem="VTA-sp-zai" secondAttribute="centerX" id="eK9-mN-8cH"/>
-                            <constraint firstItem="ucX-b1-0uu" firstAttribute="centerY" secondItem="VTA-sp-zai" secondAttribute="centerY" id="lDc-Ia-XKu"/>
                         </constraints>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="375" height="1150"/>
+                    <size key="freeformSize" width="375" height="1300"/>
                     <connections>
+                        <outlet property="descriptionHeightConstraint" destination="Dbe-Sa-M3j" id="kPb-iI-E1D"/>
                         <outlet property="descriptionTextView" destination="uCF-dc-HMD" id="CIt-T6-PDb"/>
                         <outlet property="imagesCollectionView" destination="BU7-Ac-63R" id="KAt-kL-O15"/>
                         <outlet property="mainImageView" destination="fir-Wc-lXd" id="zRy-G9-68Y"/>
                         <outlet property="mapView" destination="Jaw-ei-8dO" id="YOE-JD-8Aj"/>
+                        <outlet property="tagListView" destination="OOh-Gd-wef" id="tEv-JR-GD3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KJi-Bf-79s" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5162" y="1016"/>
+            <point key="canvasLocation" x="5160.8000000000002" y="1015.592203898051"/>
         </scene>
         <!--Карта-->
         <scene sceneID="vgc-XB-n98">
